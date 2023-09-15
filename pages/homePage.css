@@ -1,0 +1,131 @@
+
+body {
+    background-color: #eaf5ff;
+    font-family: 'Roboto', sans-serif;
+}
+
+.App {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+h1 {
+    font-weight: 500;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.main-container {
+    display: flex;
+    align-items: center;
+}
+
+.input-section {
+    flex: 1;
+    padding: 20px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.numbers-section {
+    flex: 2;
+    padding: 20px;
+}
+
+.empty-slots-container {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.empty-slots {
+    display: flex;
+    margin-right: 30px;
+}
+
+.slot {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.slot:hover {
+    transform: scale(1.1);
+}
+
+.grids-container {
+    display: flex;
+}
+
+.grid-section {
+    margin-right: 1px;
+}
+
+.number-grid {
+    display: flex;
+    flex-wrap: wrap;
+    width: 175px;
+}
+
+button {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ccc;
+    margin: 2px;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    border-radius: 50%;
+    display: flex;
+    background-color: #f4f4f4;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #e0e0e0;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+button.highlighted {
+    border: 2px solid #007BFF;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+    }
+
+    .input-section, .numbers-section {
+        width: 100%;
+    }
+}
+
+button.selected {
+  background-color: orange;  /* Color for selected normal numbers */
+}
+
+button.selected-lucky {
+  background-color: gold;    /* Color for selected lucky stars */
+}
