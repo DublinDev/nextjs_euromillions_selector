@@ -10,26 +10,25 @@ const EmptySlots = ({ selectedNumbers, onUnselect }) => (
   </div>
 );
 
-
-const NumberGrid = ({ maxNumber, onSelect, selectedNumbers, highlightedNumber }) => {
+const NumberGrid = ({ maxNumber, onSelect, onUnselect, selectedNumbers, highlightedNumber }) => {
   const setSelectedFieldColor = (num) => {
-    return selectedNumbers.includes(num) ? (maxNumber > 12 ? 'selected' : 'selected-lucky') : '' ;
+    return selectedNumbers.includes(num) ? (maxNumber > 12 ? 'selected' : 'selected-lucky') : '';
   }
 
   return (
-  <div className="number-grid">
-    {Array.from({ length: maxNumber }, (_, i) => i + 1).map((num) => (
-      <button
-        key={num}
-        className={`${num === highlightedNumber ? 'highlighted' : ''} ${setSelectedFieldColor(num)}`}
-        disabled={selectedNumbers.includes(num)}
-        onClick={() => onSelect(num)}
-      >
-        {num}
-      </button>
-    ))}
-  </div>
-);}
+    <div className="number-grid">
+      {Array.from({ length: maxNumber }, (_, i) => i + 1).map((num) => (
+        <button
+          key={num}
+          className={`${num === highlightedNumber ? 'highlighted' : ''} ${setSelectedFieldColor(num)}`}
+          onClick={() => selectedNumbers.includes(num) ? onUnselect(selectedNumbers.indexOf(num)) : onSelect(num)}
+        >
+          {num}
+        </button>
+      ))}
+    </div>
+  );
+}
 
 const HomePage = () => {
   const [selectedNumbers, setSelectedNumbers] = useState(Array(5).fill(null));
@@ -38,14 +37,14 @@ const HomePage = () => {
   const [highlightedLuckyStar, setHighlightedLuckyStar] = useState(Array(2).fill(null));
 
   const selectNumber = (num) => {
+    console.log('In onSelect');
+    console.log(selectedNumbers);
+
     const firstEmptyIndex = selectedNumbers.indexOf(null);
     if (firstEmptyIndex !== -1) {
       const newSelectedNumbers = [...selectedNumbers];
       newSelectedNumbers[firstEmptyIndex] = num;
       setSelectedNumbers(newSelectedNumbers.sort((a, b) => a - b));
-
-      // setSelectedNumbers(newSelectedNumbers);
-      // setSelectedNumbers(prevNumbers => [...prevNumbers, num].sort((a, b) => a - b));
     }
   };
 
@@ -55,11 +54,14 @@ const HomePage = () => {
       const newLuckyStars = [...luckyStars];
       newLuckyStars[firstEmptyIndex] = num;
 
-      setLuckyStars(newLuckyStars.sort((a,b) => a -b));
+      setLuckyStars(newLuckyStars.sort((a, b) => a - b));
     }
   };
 
   const unselectNumber = (index) => {
+    console.log('In unSelect');
+    console.log(selectedNumbers, index);
+
     const newSelectedNumbers = [...selectedNumbers];
     newSelectedNumbers[index] = null;
     setSelectedNumbers(newSelectedNumbers.sort((a, b) => a - b));
@@ -88,10 +90,10 @@ const HomePage = () => {
       body: JSON.stringify({ query }),
       headers: { 'Content-Type': 'application/json' }
     });
-    
+
     const data = await response.json();
     setHighlightedNumber(data.numbers);
-  };  
+  };
 
   // highlightNumber(11);
   return (
@@ -107,10 +109,10 @@ const HomePage = () => {
           </div>
           <div className="grids-container">
             <div className="grid-section">
-              <NumberGrid maxNumber={50} onSelect={selectNumber} selectedNumbers={selectedNumbers} highlightedNumber={highlightedNumber} />
+              <NumberGrid maxNumber={50} onSelect={selectNumber} onUnselect={unselectNumber} selectedNumbers={selectedNumbers} highlightedNumber={highlightedNumber} />
             </div>
             <div className="grid-section">
-              <NumberGrid maxNumber={12} onSelect={selectLuckyStar} selectedNumbers={luckyStars} highlightedNumber={highlightedLuckyStar} />
+              <NumberGrid maxNumber={12} onSelect={selectLuckyStar} onUnselect={unselectLuckyStar} selectedNumbers={luckyStars} highlightedNumber={highlightedLuckyStar} />
             </div>
           </div>
         </div>
