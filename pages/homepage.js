@@ -1,5 +1,19 @@
 import React, { useState } from 'react';
 
+const InputSection = ({ inputValue, onKeyDown, onChange }) => (
+  <div className="inputSection">
+    <input
+      type="text"
+      value={inputValue}
+      onChange={onChange}
+      onKeyDown={onKeyDown}
+      placeholder="Enter something..."
+    />
+    <p>The results will go here</p>
+  </div>
+);
+
+
 const EmptySlots = ({ selectedNumbers, onUnselect }) => (
   <div className="empty-slots">
     {selectedNumbers.map((num, index) => (
@@ -35,6 +49,8 @@ const HomePage = () => {
   const [luckyStars, setLuckyStars] = useState(Array(2).fill(null));
   const [highlightedNumber, setHighlightedNumber] = useState(Array(5).fill(null));
   const [highlightedLuckyStar, setHighlightedLuckyStar] = useState(Array(2).fill(null));
+  const [inputValue, setInputValue] = useState('');
+  const [queryResult, setQueryResult] = useState({});
 
   const selectNumber = (num) => {
     console.log('In onSelect');
@@ -83,25 +99,56 @@ const HomePage = () => {
     setHighlightedLuckyStar(num);
   };
 
-  // Function to fetch highlighted numbers based on a query
-  const fetchSuggestedNumbers = async (query) => {
-    const response = await fetch('/api/get-suggested-numbers', {
+  const checkForEnter = async (event) => {
+    if (event.key === "Enter") {
+      const resultObj = await getSQLFromPrompt(inputValue);
+
+      console.log('***************');
+
+      const res = await runQueryOnDB(resultObj.sqlQuery);
+      console.log(res);
+    }
+  };
+
+  const runQueryOnDB = async (sqlQuery) => {
+    console.log('On runQuery', sqlQuery);
+
+    const response = await fetch("/api/queryDB", {
+      method: 'POST',
+      body: JSON.stringify({ sqlQuery }),
+      headers: { 'Content-Type': 'application/json' }
+    })
+
+    const data = await response.json();
+    return data;
+  }
+
+  const getSQLFromPrompt = async (query) => {
+    const response = await fetch('/api/hello', {
       method: 'POST',
       body: JSON.stringify({ query }),
       headers: { 'Content-Type': 'application/json' }
     });
 
     const data = await response.json();
-    setHighlightedNumber(data.numbers);
+
+    return {
+      query,
+      sqlQuery: data[0]['message'].content
+    };
   };
 
-  // highlightNumber(11);
+  const updateInput = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    setInputValue(e.target.value);
+  }
+
   return (
     <div className="App">
       <div className="main-container">
-        <div className="input-section">
-          <input type="text" placeholder="Enter something...dfdfdfd" />
-        </div>
+        <InputSection inputValue={inputValue} onKeyDown={checkForEnter} onChange={updateInput} />
         <div className="numbers-section">
           <div className="empty-slots-container">
             <EmptySlots selectedNumbers={selectedNumbers} onUnselect={unselectNumber} />
@@ -122,3 +169,5 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
+// SELECT totalWinners FROM CountryResult WHERE country = 'fr' \nAND drawResultId = (SELECT id FROM NewDrawResult ORDER BY date DESC LIMIT 1);
