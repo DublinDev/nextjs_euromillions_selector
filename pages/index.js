@@ -2,7 +2,6 @@ import Head from 'next/head';
 import Layout, { siteTitle } from '../components/layout';
 import utilStyles from '../styles/utils.module.css';
 import HomePage from './homepage';
-// import HomePage from '../pages/homePage';
 
 export default function Home() {
   return (
