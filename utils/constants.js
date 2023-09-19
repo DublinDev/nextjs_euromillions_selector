@@ -19,6 +19,7 @@ For the country field in CountryResult the available options are
 [ie, fr, gb, es, pt, ch, be, at, lu]. 
 
 drawResultId is a foreign key and references drawResultId.
+When asked for lucky stars you just need to search BonusNumber table instead of NormalNumber.
 
 NewDrawResult
 id  lotteryType   date        drawNumber  jackpot      ballMachine  ballSet  totalWinners  totalTicketsSold
@@ -42,7 +43,7 @@ id  drawResultId  number
 `;
 
 
-const FINAL_REFORMAT_OF_DATA = `You will now be sent a the results of the SQL Query you generated. Please use the 
+const FINAL_REFORMAT_OF_DATA = (originalPrompt, sqlQuery, sqlResult) => `You will now be sent a the results of the SQL Query you generated. Please use the 
 information and return a JSON Object in the format 
 {
     suggestedNumbers: {
@@ -51,12 +52,38 @@ information and return a JSON Object in the format
     },
     originalPrompt: "",
     sqlQuery: "",
-    originalReturnedData: {}
+    dbQueryResult: {}
 }
 
-The originalReturnedData should be whatever was returned from the DB.
+The original prompt is ${originalPrompt}. 
+The SQL query is ${sqlQuery}.
+The dbQueryResult returned is ${sqlResult}.
 `;
 
+const SYS_MSG_FINAL_REFORMAT = `
+I need to pass you some objects and have them reformatted into this structure:
+{
+  suggestedNumbers: {
+    normalNumbers: [],
+    bonusNumbers: []
+  }
+}
 
+There will often only be one type of number returned. You may receive additional information but you will have to extract out the numbers into this format.
+If not otherwise specified assume they are normal numbers.
 
-module.exports = { SYS_SETUP_STRING };
+Additionally I will submit additional data and you need to return a whole
+object in this format:
+{
+    suggestedNumbers: {
+      normalNumbers: [],
+      bonusNumbers: []
+    },
+    originalPrompt: "",
+    sqlQuery: "",
+    dbQueryResult: {} 
+}
+
+`
+
+module.exports = { SYS_SETUP_STRING, SYS_MSG_FINAL_REFORMAT };

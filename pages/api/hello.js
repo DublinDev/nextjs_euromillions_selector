@@ -5,9 +5,6 @@ import { SYS_SETUP_STRING } from '../../utils/constants';
 
 export default async function sendPrompt(req, res) {
     const initialSystemMsg = SYS_SETUP_STRING;
-    console.log('<><><><><><><><><>');
-    console.log(req.body.query);
-    console.log('<><><><><><><><><>');
 
     if (!req) {
         req = {
