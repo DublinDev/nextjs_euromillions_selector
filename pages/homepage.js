@@ -14,15 +14,18 @@ const InputSection = ({ inputValue, onKeyDown, onChange }) => (
 );
 
 
-const EmptySlots = ({ selectedNumbers, onUnselect }) => (
-  <div className="empty-slots">
-    {selectedNumbers.map((num, index) => (
-      <div key={index} className="slot" onClick={() => onUnselect(index)}>
-        {num !== null ? num : '-'}
-      </div>
-    ))}
-  </div>
-);
+const EmptySlots = ({ selectedNumbers, onUnselect, numberType }) => {
+
+  return (
+    <div className="empty-slots">
+      {selectedNumbers.map((num, index) => (
+        <div key={index} data-testid={numberType + `-slot-` + (index+1)} className="slot" onClick={() => onUnselect(index)}>
+          {num !== null ? num : '-'}
+        </div>
+      ))}
+    </div>
+  );
+}
 
 const NumberGrid = ({ maxNumber, onSelect, onUnselect, selectedNumbers, highlightedNumbers }) => {
   const setSelectedFieldColor = (num) => {
@@ -30,12 +33,15 @@ const NumberGrid = ({ maxNumber, onSelect, onUnselect, selectedNumbers, highligh
   }
   const highlightedNumber = (num) => highlightedNumbers.includes(num) ? 'highlighted' : '';
 
+  let testId = maxNumber > 12 ? `normal-num` : 'bonus-num';
+
   return (
     <div className="number-grid">
       {Array.from({ length: maxNumber }, (_, i) => i + 1).map((num) => (
         <button
           key={num}
           className={`${highlightedNumber(num)} ${setSelectedFieldColor(num)}`}
+          data-testid={testId + num}
           onClick={() => selectedNumbers.includes(num) ? onUnselect(selectedNumbers.indexOf(num)) : onSelect(num)}
         >
           {num}
@@ -96,8 +102,8 @@ const HomePage = () => {
 
   const checkForEnter = async (event) => {
     if (event.key === "Enter") {
-      setHighlightedNumber([null,null,null,null,null]);
-      setLuckyStars([null,null,null,null,null]);
+      setHighlightedNumber([null, null, null, null, null]);
+      setLuckyStars([null, null, null, null, null]);
 
       const resultObj = await getSQLFromPrompt(inputValue);
       const res = await runQueryOnDB(resultObj.sqlQuery);
@@ -162,14 +168,18 @@ const HomePage = () => {
         <InputSection inputValue={inputValue} onKeyDown={checkForEnter} onChange={updateInput} />
         <div className="numbers-section">
           <div className="empty-slots-container">
-            <EmptySlots selectedNumbers={selectedNumbers} onUnselect={unselectNumber} />
-            <EmptySlots selectedNumbers={luckyStars} onUnselect={unselectLuckyStar} />
+            <div data-testid="normal-numbers-selected">
+              <EmptySlots selectedNumbers={selectedNumbers} onUnselect={unselectNumber} numberType="normal" />
+            </div>
+            <div data-testid='bonus-numbers-selected'>
+              <EmptySlots selectedNumbers={luckyStars} onUnselect={unselectLuckyStar} numberType="bonus" />
+            </div>
           </div>
           <div className="grids-container">
-            <div className="grid-section">
+            <div data-testid="normal-numbers" className="grid-section">
               <NumberGrid maxNumber={50} onSelect={selectNumber} onUnselect={unselectNumber} selectedNumbers={selectedNumbers} highlightedNumbers={highlightedNumbers} />
             </div>
-            <div className="grid-section">
+            <div data-testid="bonus-numbers" className="grid-section">
               <NumberGrid maxNumber={12} onSelect={selectLuckyStar} onUnselect={unselectLuckyStar} selectedNumbers={luckyStars} highlightedNumbers={highlightedLuckyStar} />
             </div>
           </div>
