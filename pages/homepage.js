@@ -1,31 +1,7 @@
 import React, { useState } from 'react';
+import InputSection from './InputSection';
+import EmptySlots from './EmptySlots';
 
-const InputSection = ({ inputValue, onKeyDown, onChange }) => (
-  <div className="inputSection">
-    <input
-      type="text"
-      value={inputValue}
-      onChange={onChange}
-      onKeyDown={onKeyDown}
-      placeholder="Enter something..."
-    />
-    <p>The results will go here</p>
-  </div>
-);
-
-
-const EmptySlots = ({ selectedNumbers, onUnselect, numberType }) => {
-
-  return (
-    <div className="empty-slots">
-      {selectedNumbers.map((num, index) => (
-        <div key={index} data-testid={numberType + `-slot-` + (index+1)} className="slot" onClick={() => onUnselect(index)}>
-          {num !== null ? num : '-'}
-        </div>
-      ))}
-    </div>
-  );
-}
 
 const NumberGrid = ({ maxNumber, onSelect, onUnselect, selectedNumbers, highlightedNumbers }) => {
   const setSelectedFieldColor = (num) => {
@@ -88,16 +64,6 @@ const HomePage = () => {
     const newLuckyStars = [...luckyStars];
     newLuckyStars[index] = null;
     setLuckyStars(newLuckyStars.sort((a, b) => a - b));
-  };
-
-  // Function to highlight a number
-  const highlightNumber = (num) => {
-    setHighlightedNumber(num);
-  };
-
-  // Function to highlight a Lucky Star
-  const highlightLuckyStar = (num) => {
-    setHighlightedLuckyStar(num);
   };
 
   const checkForEnter = async (event) => {
@@ -190,5 +156,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
-// SELECT totalWinners FROM CountryResult WHERE country = 'fr' \nAND drawResultId = (SELECT id FROM NewDrawResult ORDER BY date DESC LIMIT 1);
