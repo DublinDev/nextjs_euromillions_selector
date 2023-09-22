@@ -13,7 +13,11 @@ This is a basic project to allow users to query all previous numbers of euromill
 
 ## ToDo
 
-* Integrate ChatGPT
-* Write APIs to communicate
+* Implement CHatGPT moderation filter
+* Ensure only SELECT queries can be executed againt the DB
+* Fine tune ChatGPT for better output by helping it understand the context
+* Display some loading indicators in the homepage
+* Create tests using playwright
+* Write better error handleing in all funcitons
 
 This is a starter template for [Learn Next.js](https://nextjs.org/learn).
