@@ -3,16 +3,22 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "start": "next start"
+    "start": "next start",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "next": "latest",
     "openai": "^4.7.1",
+    "playwright": "^1.38.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sqlite3": "^5.1.6"
   },
   "engines": {
     "node": ">=18"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.38.0",
+    "@types/node": "^20.6.3"
   }
 }
