@@ -1,5 +1,3 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-// import OpenAI from 'openai';
 import openai from '../../utils/openai';
 import { SYS_SETUP_STRING } from '../../utils/constants';
 
