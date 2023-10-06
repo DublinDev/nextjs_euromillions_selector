@@ -21,3 +21,4 @@ This is a basic project to allow users to query all previous numbers of euromill
 * Create tests using playwright - done 
 * Write better error handleing in all funcitons
 * Reformat code
+* Reformat db (remove £ and € from jackpoot columns)
