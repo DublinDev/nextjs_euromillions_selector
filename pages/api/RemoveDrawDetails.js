@@ -1,25 +1,49 @@
-import { insert } from '../../lib/db/insert';
+import { removeFromDB } from '../../lib/db/delete';
 
-export default (req, res) => {
 
-    if (!req.body.number || !(req.body.number > 0 && req.body.number < 13)) {
-        throw new Error(`Property "number" must be provided and above 0`);
-    }
-    if (!req.body.drawResultId || isNaN(req.body.drawResultId)) {
-        throw new Error(`Property "drawResultId" must be provided and an int`);
+export default async function deleteDraw(req, res) {
+    // Check if the request method is POST
+    if (req.method !== 'POST') {
+        return res.status(405).json({ error: 'Method Not Allowed' });
     }
 
-    const valuesArr = [req.body.number, req.body.drawResultId];
-    const insertQuery = `INSERT INTO NormalNumber(drawResultId, number) VALUES(?,?)`;
-
-    if (req.method === 'POST') {
-
-        insert((results) => {
-            console.log(results);
-            res.status(200).json(results);
-        }, insertQuery, valuesArr);
-
-    } else {
-        res.status(405).end(); // Method Not Allowed
+    if (!req.body.drawNumber || isNaN(req.body.drawNumber)) {
+        throw new Error(`Property "drawNumber" must be provided and above 0`);
     }
-};
+
+    // Extract the draw number from the request body
+    const { drawNumber } = req.body;
+
+    if (!drawNumber) {
+        return res.status(400).json({ error: 'Draw number is required' });
+    }
+
+    // List of tables to delete the records from
+    const quieries = [
+        'DELETE FROM NewDrawResult WHERE id = ?',
+        'DELETE FROM CountryResult WHERE drawResultId = ?',
+        'DELETE FROM NormalNumber WHERE drawResultId = ?',
+        'DELETE FROM BonusNumber WHERE drawResultId = ?',
+    ];
+
+    try {
+        for (let queryString of quieries) {
+            const values = [drawNumber];
+
+            // Use a promise to handle asynchronous DB operations
+            await new Promise((resolve, reject) => {
+                removeFromDB((rows) => {
+                    console.log(`Removed entry for ${values}`);
+                    // If you need to handle the result, you can do so here
+                    resolve(rows);
+                }, queryString, values);
+            });
+        }
+
+        // Send a success response after all delete operations are successful
+        return res.status(200).json({ message: 'Records deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting records:', error);
+        return res.status(500).json({ error: 'Failed to delete records' });
+    }
+}
