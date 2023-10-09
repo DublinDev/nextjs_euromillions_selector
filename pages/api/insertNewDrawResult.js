@@ -3,61 +3,65 @@ import { LOTTERY_TYPES } from '../../utils/constants';
 
 export default (req, res) => {
 
-    const expectedValues = [
-        "lotteryType",
-        "date",
-        "drawNumber",
-        "jackpot",
-        "ballMachine",
-        "ballSet",
-        "totalWinners",
-        "totalTicketsSold"
-    ]
+    return new Promise((resolve, reject) => {
 
-    if (!req.body.lotteryType || LOTTERY_TYPES.includes("lotteryType")) {
-        throw new Error(`Property "lotteryType" must be provided and an int`);
-    }
-    if (!req.body.date) {
-        throw new Error(`Property "date" must be provided and in the provided list`);
-    }
-    if (!req.body.drawNumber || isNaN(req.body.drawNumber)) {
-        throw new Error(`Property "drawNumber" must be provided`);
-    }
-    if (!req.body.jackpot) {
-        throw new Error(`Property "jackpot" must be provided`);
-    }
-    if (!req.body.ballMachine) {
-        throw new Error(`Property "ballMachine" must be provided`);
-    }
-    if (!req.body.ballSet) {
-        throw new Error(`Property "ballSet" must be provided`);
-    }
-    if (!req.body.totalWinners) {
-        throw new Error(`Property "totalWinners" must be provided`);
-    }
-    if (!req.body.totalTicketsSold) {
-        throw new Error(`Property "totalTicketsSold" must be provided`);
-    }
+        const expectedValues = [
+            "lotteryType",
+            "date",
+            "drawNumber",
+            "jackpot",
+            "ballMachine",
+            "ballSet",
+            "totalWinners",
+            "totalTicketsSold"
+        ]
 
-    const valuesArr = expectedValues.map(key => {
-        if(!req.body.hasOwnProperty(key)){
-            throw new Error(`Missing required property [${key}] while attempting add to NewDrawResult`)
+        if (!req.body.lotteryType || !LOTTERY_TYPES.includes(req.body.lotteryType)) {
+            throw new Error(`Property "lotteryType" must be provided and of a set type: ${req.body.lotteryType}`);
         }
-        return req.body[key];
-    });
+        if (!req.body.date) {
+            throw new Error(`Property "date" must be provided and in the provided list`);
+        }
+        if (!req.body.drawNumber || isNaN(req.body.drawNumber)) {
+            throw new Error(`Property "drawNumber" must be provided: ${req.body.drawNumber}`);
+        }
+        if (!req.body.jackpot) {
+            throw new Error(`Property "jackpot" must be provided`);
+        }
+        if (!req.body.ballMachine) {
+            throw new Error(`Property "ballMachine" must be provided`);
+        }
+        if (!req.body.ballSet) {
+            throw new Error(`Property "ballSet" must be provided`);
+        }
+        if (!req.body.totalWinners) {
+            throw new Error(`Property "totalWinners" must be provided`);
+        }
+        if (!req.body.totalTicketsSold) {
+            throw new Error(`Property "totalTicketsSold" must be provided`);
+        }
 
-    
-    const insertQuery = `INSERT INTO NewDrawResult(lotteryType,date,drawNumber,jackpot,ballMachine,ballSet,totalWinners, totalTicketsSold)
+        const valuesArr = expectedValues.map(key => {
+            if (!req.body.hasOwnProperty(key)) {
+                throw new Error(`Missing required property [${key}] while attempting add to NewDrawResult`)
+            }
+            return req.body[key];
+        });
+
+        const insertQuery = `INSERT INTO NewDrawResult(lotteryType,date,drawNumber,jackpot,ballMachine,ballSet,totalWinners, totalTicketsSold)
     VALUES(?,?,?,?,?,?,?,?)`;
 
-    if (req.method === 'POST') {
-        
-        insert((results) => {
-            console.log(results);
-            res.status(200).json(results);
-        }, insertQuery, valuesArr);
+        if (req.method === 'POST') {
 
-    } else {
-        res.status(405).end(); // Method Not Allowed
-    }
+            insert((results) => {
+                console.log(results);
+                res.status(200).json(results);
+                resolve();
+            }, insertQuery, valuesArr);
+
+        } else {
+            res.status(405).end(); // Method Not Allowed
+            resolve();
+        }
+    });
 };
