@@ -2,25 +2,31 @@ import { insert } from '../../lib/db/insert';
 
 export default (req, res) => {
 
-    if (!req.body.number || !(req.body.number > 0 && req.body.number < 13)) {
-        throw new Error(`Property "number" must be provided and above 0`);
-    }
-    if (!req.body.drawResultId || isNaN(req.body.drawResultId)) {
-        throw new Error(`Property "drawResultId" must be provided and an int`);
-    }
+    return new Promise((resolve, reject) => {
+        if (!req.body.number || !(req.body.number >= 1 && req.body.number <= 12)) {
+            throw new Error(`Property "number" must be provided and between 0 and 12: ${req.body.number}`);
+        }
+        if (!req.body.drawResultId || isNaN(req.body.drawResultId)) {
+            throw new Error(`Property "drawResultId" must be provided and an int: ${req.body.drawResultId}`);
+        }
 
-    const valuesArr = [req.body.drawResultId, req.body.number];
-    const insertQuery = `INSERT INTO BonusNumber(drawResultId, number) VALUES(?,?)`;
+        const valuesArr = [req.body.drawResultId, req.body.number];
+        const insertQuery = `INSERT INTO BonusNumber(drawResultId, number) VALUES(?,?)`;
 
-    if (req.method === 'POST') {
+        if (req.method === 'POST') {
 
-        insert((results) => {
-            console.log(results);
-            console.log('*********');
-            res.status(200).json(results);
-        }, insertQuery, valuesArr);
+            insert((insertId) => {
+                console.log(insertId);
+                console.log('*********');
+                res.status(200).json({id: insertId});
+                resolve();
+                // res.end();
+            }, insertQuery, valuesArr);
 
-    } else {
-        res.status(405).end(); // Method Not Allowed
-    }
+        } else {
+            res.status(405).end(); // Method Not Allowed
+            resolve();
+        }
+
+    })
 };
