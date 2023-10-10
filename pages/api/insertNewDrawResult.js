@@ -1,5 +1,5 @@
 import { insert } from '../../lib/db/insert';
-import { LOTTERY_TYPES } from '../../utils/constants';
+import { LOTTERY_TYPES, JACKPOT_OUTCOME_OPTIONS } from '../../utils/constants';
 
 export default (req, res) => {
 
@@ -13,7 +13,8 @@ export default (req, res) => {
             "ballMachine",
             "ballSet",
             "totalWinners",
-            "totalTicketsSold"
+            "totalTicketsSold",
+            "outcome",
         ]
 
         if (!req.body.lotteryType || !LOTTERY_TYPES.includes(req.body.lotteryType)) {
@@ -40,6 +41,9 @@ export default (req, res) => {
         if (!req.body.totalTicketsSold) {
             throw new Error(`Property "totalTicketsSold" must be provided`);
         }
+        if (!req.body.outcome || !JACKPOT_OUTCOME_OPTIONS.includes(req.body.outcome)) {
+            throw new Error(`Property "outcome" must one of the expected values: ${req.body.outcome}`);
+        }
 
         const valuesArr = expectedValues.map(key => {
             if (!req.body.hasOwnProperty(key)) {
@@ -48,8 +52,8 @@ export default (req, res) => {
             return req.body[key];
         });
 
-        const insertQuery = `INSERT INTO NewDrawResult(lotteryType,date,drawNumber,jackpot,ballMachine,ballSet,totalWinners, totalTicketsSold)
-    VALUES(?,?,?,?,?,?,?,?)`;
+        const insertQuery = `INSERT INTO NewDrawResult(lotteryType,date,drawNumber,jackpot,ballMachine,ballSet,totalWinners,totalTicketsSold,outcome)
+    VALUES(?,?,?,?,?,?,?,?,?)`;
 
         if (req.method === 'POST') {
 
