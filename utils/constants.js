@@ -1,6 +1,6 @@
 const SYS_SETUP_STRING = `There is a database which contains information on all the data
 related to the euromillions lottery draws. I will provide you with the database schemas. 
-It's important to know that newDrawResult contains the main information about the draw and 
+It's important to know that NewDrawResult contains the main information about the draw and 
 CountryResult contain the information relating to how many winners there where in each country,
 how many balls they matched and how much they won (along with some other information). 
 
@@ -160,13 +160,15 @@ object in this format:
 `
 const COUNTRY_CODES = ["ie", "fr", "gb", "es", "pt", "ch", "be", "at", "lu"];
 const LOTTERY_TYPES = ["euromillions"];
+const JACKPOT_OUTCOME_OPTIONS = ["Jackpot Won!", "Rolldown!", "Rollover!"];
 
 
 module.exports = {
   SYS_SETUP_STRING,
   SYS_MSG_FINAL_REFORMAT,
   COUNTRY_CODES,
-  LOTTERY_TYPES
+  LOTTERY_TYPES,
+  JACKPOT_OUTCOME_OPTIONS,
 };
 
 `
