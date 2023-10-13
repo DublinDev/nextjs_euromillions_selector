@@ -3,69 +3,71 @@ import { LOTTERY_TYPES, JACKPOT_OUTCOME_OPTIONS } from '../../utils/constants';
 
 export default (req, res) => {
 
-    return new Promise((resolve, reject) => {
 
-        const expectedValues = [
-            "lotteryType",
-            "date",
-            "drawNumber",
-            "jackpot",
-            "ballMachine",
-            "ballSet",
-            "totalWinners",
-            "totalTicketsSold",
-            "outcome",
-        ]
+    const expectedValues = [
+        "lotteryType",
+        "date",
+        "drawNumber",
+        "jackpot",
+        "ballMachine",
+        "ballSet",
+        "totalWinners",
+        "totalTicketsSold",
+        "outcome",
+    ]
 
-        if (!req.body.lotteryType || !LOTTERY_TYPES.includes(req.body.lotteryType)) {
-            throw new Error(`Property "lotteryType" must be provided and of a set type: ${req.body.lotteryType}`);
-        }
-        if (!req.body.date) {
-            throw new Error(`Property "date" must be provided and in the provided list`);
-        }
-        if (!req.body.drawNumber || isNaN(req.body.drawNumber)) {
-            throw new Error(`Property "drawNumber" must be provided: ${req.body.drawNumber}`);
-        }
-        if (!req.body.jackpot) {
-            throw new Error(`Property "jackpot" must be provided`);
-        }
-        if (!req.body.ballMachine) {
-            throw new Error(`Property "ballMachine" must be provided`);
-        }
-        if (!req.body.ballSet) {
-            throw new Error(`Property "ballSet" must be provided`);
-        }
-        if (!req.body.totalWinners) {
-            throw new Error(`Property "totalWinners" must be provided`);
-        }
-        if (!req.body.totalTicketsSold) {
-            throw new Error(`Property "totalTicketsSold" must be provided`);
-        }
-        if (!req.body.outcome || !JACKPOT_OUTCOME_OPTIONS.includes(req.body.outcome)) {
-            throw new Error(`Property "outcome" must one of the expected values: ${req.body.outcome}`);
-        }
+    let errors = [];
 
-        const valuesArr = expectedValues.map(key => {
-            if (!req.body.hasOwnProperty(key)) {
-                throw new Error(`Missing required property [${key}] while attempting add to NewDrawResult`)
-            }
-            return req.body[key];
-        });
+    // Check request method first
+    if (req.method !== 'POST') {
+        return res.status(405).end(); // Method Not Allowed
+    }
 
-        const insertQuery = `INSERT INTO NewDrawResult(lotteryType,date,drawNumber,jackpot,ballMachine,ballSet,totalWinners,totalTicketsSold,outcome)
+    if (!req.body.drawNumber || isNaN(req.body.drawNumber)) {
+        errors.push(`Property 'drawNumber' must be provided and an int: ${req.body.drawNumber}`);
+    }
+    if (!req.body.lotteryType || !LOTTERY_TYPES.includes(req.body.lotteryType)) {
+        errors.push(`Property 'lotteryType' must be provided and of a set type: ${req.body.lotteryType}`);
+    }
+    if (!req.body.date) {
+        errors.push(`Property 'date' must be provided and in the provided list`);
+    }
+    if (!req.body.jackpot) {
+        errors.push(`Property 'jackpot' must be provided`);
+    }
+    if (!req.body.ballMachine) {
+        errors.push(`Property 'ballMachine' must be provided`);
+    }
+    if (!req.body.ballSet) {
+        errors.push(`Property 'ballSet' must be provided`);
+    }
+    if (!req.body.totalWinners) {
+        errors.push(`Property 'totalWinners' must be provided`);
+    }
+    if (!req.body.totalTicketsSold) {
+        errors.push(`Property 'totalTicketsSold' must be provided`);
+    }
+    if (!req.body.outcome || !JACKPOT_OUTCOME_OPTIONS.includes(req.body.outcome)) {
+        errors.push(`Property 'outcome' must one of the expected values: ${req.body.outcome}`);
+    }
+
+    if (errors.length > 0) {
+        return res.status(400).json({ errors });
+    }
+
+    const valuesArr = expectedValues.map(key => {
+        if (!req.body.hasOwnProperty(key)) {
+            throw new Error(`Missing required property [${key}] while attempting add to NewDrawResult`)
+        }
+        return req.body[key];
+    });
+
+    const insertQuery = `INSERT INTO NewDrawResult(lotteryType,date,drawNumber,jackpot,ballMachine,ballSet,totalWinners,totalTicketsSold,outcome)
     VALUES(?,?,?,?,?,?,?,?,?)`;
 
-        if (req.method === 'POST') {
+    insert((results) => {
+        console.log(results);
+        return res.status(200).json(results);
+    }, insertQuery, valuesArr);
 
-            insert((results) => {
-                console.log(results);
-                res.status(200).json(results);
-                resolve();
-            }, insertQuery, valuesArr);
-
-        } else {
-            res.status(405).end(); // Method Not Allowed
-            resolve();
-        }
-    });
 };
