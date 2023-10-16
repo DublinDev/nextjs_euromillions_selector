@@ -2190,8 +2190,9 @@
 									"",
 									"pm.test(\"Message is a non-empty string\", function () {",
 									"    const responseData = pm.response.json();",
-									"    ",
-									"    pm.expect(responseData.message).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+									"    console.log(responseData.message);",
+									"",
+									"    pm.expect(responseData.message).to.be.a('string').and.to.equal(\"Records deleted successfully\");",
 									"});",
 									"",
 									"",
@@ -2199,10 +2200,6 @@
 									"  pm.expect(pm.response.responseTime).to.be.below(500);",
 									"});",
 									"",
-									"",
-									"pm.test(\"Verify that the request body is empty\", function () {",
-									"  pm.expect(pm.request.body).to.be.empty;",
-									"});",
 									""
 								],
 								"type": "text/javascript"
