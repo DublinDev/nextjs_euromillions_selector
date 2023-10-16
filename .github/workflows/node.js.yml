@@ -16,16 +16,28 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
+        node-version: [18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
     - uses: actions/checkout@v3
+    
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test:e2e
+
+    - name: Install dependencies
+      run: npm i
+
+    - name: Start development server
+      run: npm run dev &
+      # The & runs the server in the background, allowing the next steps to run while the server is still running.
+
+    - name: Wait for server to be ready
+      run: sleep 15s
+      # This is a simple way to wait, but you might want to use a more robust approach, such as polling an endpoint.
+
+    - name: Run api tests
+      run: npm run test:api

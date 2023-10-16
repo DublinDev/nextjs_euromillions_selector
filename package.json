@@ -4,12 +4,13 @@
     "build": "next build",
     "dev": "next dev",
     "start": "next start",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "test:api": "newman run \"tests/API/Lottery Selector.postman_collection.json\" -e \"tests/API/Lottery Project- prod.postman_environment.json\" --folder Tests"
   },
   "dependencies": {
     "next": "latest",
     "openai": "^4.7.1",
-    "playwright": "^1.38.0",
+    "playwright": "^1.39.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sqlite3": "^5.1.6"
