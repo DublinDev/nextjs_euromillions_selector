@@ -14,7 +14,25 @@ import React from 'react';
  */
 
 
-const InputSection = ({ inputValue, onKeyDown, onChange, status }) => {
+const InputSection = ({ inputValue, onKeyDown, onChange, status, outcome }) => {
+
+    status = !status ? [] : status;
+    const printOutcome = (outcome) => {
+        if (Object.keys(outcome).length > 0) {
+            return (
+                <div>
+                    <p>
+                        <span key="1" className="outcome-title">OriginalQuery</span>{outcome.sql}<br />
+                        <span key="2" className="outcome-title">SQL</span>{outcome.sql}<br />
+                        <span key="3" className="outcome-title">RawSQLResponse</span>{outcome.sqlQueryResult}<br />
+                        {/* <span className="outcome-title">Formatted</span>{outcome.formattedQueryResult}<br/> */}
+                    </p>
+                </div>
+            )
+        };
+        return <></>;
+    };
+
     return (
         <div className="inputSection">
             <input
@@ -24,12 +42,16 @@ const InputSection = ({ inputValue, onKeyDown, onChange, status }) => {
                 onKeyDown={onKeyDown}
                 placeholder="Enter something..."
             />
-            <p>The results will go here</p>
             <ul>
+                <li className="current-status">{status[status.length - 1]}</li>
+
                 {status.map((statement, index) => (
-                    <li key={index}>{statement}</li>
+                    <li key={index} className="progress-tracker">{statement}</li>
                 ))}
             </ul>
+
+            {/* <p>{JSON.stringify(outcome, null, 2)}</p> */}
+            {/* {printOutcome(outcome)} */}
         </div>
     );
 }
