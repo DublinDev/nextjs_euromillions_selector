@@ -1948,7 +1948,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"drawNumber\": 1676\n}",
+									"raw": "{\n    \"drawNumber\": {{test_draw_id}}\n}",
 									"options": {
 										"raw": {
 											"language": "json"
