@@ -1,0 +1,2401 @@
+{
+	"info": {
+		"_postman_id": "4d21c5ac-3018-4c4a-ac90-543bdb828af7",
+		"name": "Lottery Selector",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Tests",
+			"item": [
+				{
+					"name": "Tests For Prize Table",
+					"item": [
+						{
+							"name": "InsertCountryResult- Missing drawResultId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5a68a41b-fac5-4376-8b27-d1b5edf47f97",
+										"exec": [
+											"pm.test(\"Response status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the error field\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors).to.exist;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the required error message\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'drawResultId' must be provided and an int: undefined\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "c88eb4b8-7e1f-4a74-83b7-428ade152105",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"country\": \"ie\",\n    \"numbersMatched\": \"0 + 0\",\n    \"countrySpecificWinners\": \"00\",\n    \"prizesPerWinner\": \"€000,000\",\n    \"totalWinners\": \"000\",\n    \"prizeFundAmount\": \"0000\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/api/insertNewCountryResult"
+							},
+							"response": []
+						},
+						{
+							"name": "InsertCountryResult- Missing country",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5a68a41b-fac5-4376-8b27-d1b5edf47f97",
+										"exec": [
+											"pm.test(\"Response status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the error field\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors).to.exist;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the required error message\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'country' must be provided and in the provided list: undefined\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "cf83c0c6-9e9c-46f7-8ca5-4fa857d48a4f",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"numbersMatched\": \"0 + 0\",\n    \"countrySpecificWinners\": \"00\",\n    \"prizesPerWinner\": \"€000,000\",\n    \"totalWinners\": \"000\",\n    \"prizeFundAmount\": \"0000\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/api/insertNewCountryResult"
+							},
+							"response": []
+						},
+						{
+							"name": "InsertCountryResult- Missing numbersMatched",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5a68a41b-fac5-4376-8b27-d1b5edf47f97",
+										"exec": [
+											"pm.test(\"Response status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the error field\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors).to.exist;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the required error message\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'numbersMatched' must be provided: undefined\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "9ccc09d7-a5a8-4b51-b9b6-4b7317591db4",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"country\": \"ie\",\n    \"countrySpecificWinners\": \"00\",\n    \"prizesPerWinner\": \"€000,000\",\n    \"totalWinners\": \"000\",\n    \"prizeFundAmount\": \"0000\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/api/insertNewCountryResult"
+							},
+							"response": []
+						},
+						{
+							"name": "InsertCountryResult- Missing countrySpecificWinners",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5a68a41b-fac5-4376-8b27-d1b5edf47f97",
+										"exec": [
+											"pm.test(\"Response status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the error field\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors).to.exist;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the required error message\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'countrySpecificWinners' must be provided: undefined\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "c16ee3ab-9dec-4a75-98d3-8f43a7c024f6",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"country\": \"ie\",\n    \"numbersMatched\": \"0 + 0\",\n    \"prizesPerWinner\": \"€000,000\",\n    \"totalWinners\": \"000\",\n    \"prizeFundAmount\": \"0000\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/api/insertNewCountryResult"
+							},
+							"response": []
+						},
+						{
+							"name": "InsertCountryResult- Missing prizesPerWinner",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5a68a41b-fac5-4376-8b27-d1b5edf47f97",
+										"exec": [
+											"pm.test(\"Response status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the error field\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors).to.exist;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the required error message\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'prizesPerWinner' must be provided: undefined\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "5cc3fa4c-8105-411c-b944-618a6e9c3f16",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"country\": \"ie\",\n    \"numbersMatched\": \"0 + 0\",\n    \"countrySpecificWinners\": \"00\",\n    \"totalWinners\": \"000\",\n    \"prizeFundAmount\": \"0000\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/api/insertNewCountryResult"
+							},
+							"response": []
+						},
+						{
+							"name": "InsertCountryResult- Missing totalWinners",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5a68a41b-fac5-4376-8b27-d1b5edf47f97",
+										"exec": [
+											"pm.test(\"Response status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the error field\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors).to.exist;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the required error message\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'totalWinners' must be provided: undefined\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "899b03e5-fdfc-42bf-a951-ea8a169794e8",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"country\": \"ie\",\n    \"numbersMatched\": \"0 + 0\",\n    \"countrySpecificWinners\": \"00\",\n    \"prizesPerWinner\": \"€000,000\",\n    \"prizeFundAmount\": \"0000\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/api/insertNewCountryResult"
+							},
+							"response": []
+						},
+						{
+							"name": "InsertCountryResult- Missing prizeFundAmount",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5a68a41b-fac5-4376-8b27-d1b5edf47f97",
+										"exec": [
+											"pm.test(\"Response status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the error field\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors).to.exist;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the required error message\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'prizeFundAmount' must be provided: undefined\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "d3e30124-92e6-48ce-b3dc-906fcd6a3c0a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"country\": \"ie\",\n    \"numbersMatched\": \"0 + 0\",\n    \"countrySpecificWinners\": \"00\",\n    \"prizesPerWinner\": \"€000,000\",\n    \"totalWinners\": \"000\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/api/insertNewCountryResult"
+							},
+							"response": []
+						},
+						{
+							"name": "InsertCountryResult- Missing multiple parameters",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5a68a41b-fac5-4376-8b27-d1b5edf47f97",
+										"exec": [
+											"pm.test(\"Response status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the error field\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors).to.exist;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the required error messages\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors.length).to.equal(4);",
+											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'drawResultId' must be provided and an int: undefined\");",
+											"    pm.expect(responseData.errors[1]).to.equal(\"Property 'country' must be provided and in the provided list: undefined\");",
+											"    pm.expect(responseData.errors[2]).to.equal(\"Property 'numbersMatched' must be provided: undefined\");",
+											"    pm.expect(responseData.errors[3]).to.equal(\"Property 'prizeFundAmount' must be provided: undefined\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "2460928f-be60-4ae9-8486-ca1ce2fa4f61",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"countrySpecificWinners\": \"00\",\n    \"prizesPerWinner\": \"€000,000\",\n    \"totalWinners\": \"000\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/api/insertNewCountryResult"
+							},
+							"response": []
+						}
+					],
+					"id": "0135df66-c52e-4ca4-b24e-a2c796944e02"
+				},
+				{
+					"name": "Tests for Main Table",
+					"item": [
+						{
+							"name": "InsertNewDrawResult- Missing lotteryType",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "35481939-be8c-41c8-8fbf-4d9a6d40e492",
+										"exec": [
+											"pm.test(\"Response status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the error field\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors).to.exist;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the required error message\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'lotteryType' must be provided and of a set type: undefined\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "61a0a36f-7956-4a16-9f24-722134ba3ce5",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"date\": \"10-10-2010\",\n    \"drawNumber\": \"1234\",\n    \"jackpot\": \"€0,000,000\",\n    \"ballMachine\": \"0101\",\n    \"ballSet\": \"E1\",\n    \"totalWinners\": \"1234566778\",\n    \"totalTicketsSold\": \"123456789\",\n    \"outcome\": \"Rollover!\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/api/insertNewDrawResult"
+							},
+							"response": []
+						},
+						{
+							"name": "InsertNewDrawResult- Missing date",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5d31dc32-eabf-4720-bad7-37c8603f0f01",
+										"exec": [
+											"pm.test(\"Response status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the error field\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors).to.exist;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the required error message\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'date' must be provided and in the provided list\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "1ca71f8a-07de-4c09-96e4-1d5cb7b79268",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"lotteryType\": \"euromillions\",\n    \"drawNumber\": \"1234\",\n    \"jackpot\": \"€0,000,000\",\n    \"ballMachine\": \"0101\",\n    \"ballSet\": \"E1\",\n    \"totalWinners\": \"1234566778\",\n    \"totalTicketsSold\": \"123456789\",\n    \"outcome\": \"Rollover!\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/api/insertNewDrawResult"
+							},
+							"response": []
+						},
+						{
+							"name": "InsertNewDrawResult- Missing drawNumber",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a383d913-5110-4071-9be6-43bfcbdcaf62",
+										"exec": [
+											"pm.test(\"Response status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the error field\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors).to.exist;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the required error message\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'drawNumber' must be provided and an int: undefined\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "0423e95e-d382-448c-b6c1-1bef372d9acc",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"lotteryType\": \"euromillions\",\n    \"date\": \"10-10-2010\",\n    \"jackpot\": \"€0,000,000\",\n    \"ballMachine\": \"0101\",\n    \"ballSet\": \"E1\",\n    \"totalWinners\": \"1234566778\",\n    \"totalTicketsSold\": \"123456789\",\n    \"outcome\": \"Rollover!\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/api/insertNewDrawResult"
+							},
+							"response": []
+						},
+						{
+							"name": "InsertNewDrawResult- Missing jackpot",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "4b06594d-0f10-4169-a00f-71826972858c",
+										"exec": [
+											"pm.test(\"Response status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the error field\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors).to.exist;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the required error message\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'jackpot' must be provided\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "5d214541-6359-4443-ac6d-9d6f05c9e7bf",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"lotteryType\": \"euromillions\",\n    \"date\": \"10-10-2010\",\n    \"drawNumber\": \"1234\",\n    \"ballMachine\": \"0101\",\n    \"ballSet\": \"E1\",\n    \"totalWinners\": \"1234566778\",\n    \"totalTicketsSold\": \"123456789\",\n    \"outcome\": \"Rollover!\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/api/insertNewDrawResult"
+							},
+							"response": []
+						},
+						{
+							"name": "InsertNewDrawResult- Missing ballMachine",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "16e53af4-4670-4528-a6c3-8b30f09da5e2",
+										"exec": [
+											"pm.test(\"Response status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the error field\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors).to.exist;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the required error message\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'ballMachine' must be provided\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "14bad406-ef8b-4d38-8f2a-6c1d09b0a452",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"lotteryType\": \"euromillions\",\n    \"date\": \"10-10-2010\",\n    \"drawNumber\": \"1234\",\n    \"jackpot\": \"€0,000,000\",\n    \"ballSet\": \"E1\",\n    \"totalWinners\": \"1234566778\",\n    \"totalTicketsSold\": \"123456789\",\n    \"outcome\": \"Rollover!\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/api/insertNewDrawResult"
+							},
+							"response": []
+						},
+						{
+							"name": "InsertNewDrawResult- Missing ballSet",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "754699c6-f384-4169-8b74-6e8be56f611f",
+										"exec": [
+											"pm.test(\"Response status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the error field\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors).to.exist;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the required error message\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'ballSet' must be provided\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "85f89a32-139b-435c-8574-1af770f05006",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"lotteryType\": \"euromillions\",\n    \"date\": \"10-10-2010\",\n    \"drawNumber\": \"1234\",\n    \"jackpot\": \"€0,000,000\",\n    \"ballMachine\": \"0101\",\n    \"totalWinners\": \"1234566778\",\n    \"totalTicketsSold\": \"123456789\",\n    \"outcome\": \"Rollover!\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/api/insertNewDrawResult"
+							},
+							"response": []
+						},
+						{
+							"name": "InsertNewDrawResult- Missing totalWinners",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d87e233a-ff3f-4601-99ab-844fa5ae4b88",
+										"exec": [
+											"pm.test(\"Response status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the error field\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors).to.exist;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the required error message\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'totalWinners' must be provided\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "75d6d1f3-fd13-4709-90b0-2bdfba435c7f",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"lotteryType\": \"euromillions\",\n    \"date\": \"10-10-2010\",\n    \"drawNumber\": \"1234\",\n    \"jackpot\": \"€0,000,000\",\n    \"ballMachine\": \"0101\",\n    \"ballSet\": \"E1\",\n    \"totalTicketsSold\": \"123456789\",\n    \"outcome\": \"Rollover!\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/api/insertNewDrawResult"
+							},
+							"response": []
+						},
+						{
+							"name": "InsertNewDrawResult- Missing totalTicketsSold",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "e48f89f3-572f-454f-9ab4-2d409926e8d8",
+										"exec": [
+											"pm.test(\"Response status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the error field\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors).to.exist;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the required error message\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'totalTicketsSold' must be provided\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "2a8f3bec-6d60-49a5-a1d3-18ab7aa57b35",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"lotteryType\": \"euromillions\",\n    \"date\": \"10-10-2010\",\n    \"drawNumber\": \"1234\",\n    \"jackpot\": \"€0,000,000\",\n    \"ballMachine\": \"0101\",\n    \"ballSet\": \"E1\",\n    \"totalWinners\": \"1234566778\",\n    \"outcome\": \"Rollover!\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/api/insertNewDrawResult"
+							},
+							"response": []
+						},
+						{
+							"name": "InsertNewDrawResult- Missing outcome",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "735bcd07-fd9f-4e91-be04-111022689694",
+										"exec": [
+											"pm.test(\"Response status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the error field\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors).to.exist;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the required error message\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'outcome' must one of the expected values: undefined\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "7e11e669-c856-42b5-a4b2-aa549a21f35e",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"lotteryType\": \"euromillions\",\n    \"date\": \"10-10-2010\",\n    \"drawNumber\": \"1234\",\n    \"jackpot\": \"€0,000,000\",\n    \"ballMachine\": \"0101\",\n    \"ballSet\": \"E1\",\n    \"totalWinners\": \"1234566778\",\n    \"totalTicketsSold\": \"123456789\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/api/insertNewDrawResult"
+							},
+							"response": []
+						},
+						{
+							"name": "InsertNewDrawResult- Missing multiple parameters",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "735bcd07-fd9f-4e91-be04-111022689694",
+										"exec": [
+											"pm.test(\"Response status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the error field\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors).to.exist;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the correct number of error message\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors.length).to.deep.equal(9)",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the required error message\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors).to.deep.equal([",
+											"        \"Property 'drawNumber' must be provided and an int: undefined\",",
+											"        \"Property 'lotteryType' must be provided and of a set type: undefined\",",
+											"        \"Property 'date' must be provided and in the provided list\",",
+											"        \"Property 'jackpot' must be provided\",",
+											"        \"Property 'ballMachine' must be provided\",",
+											"        \"Property 'ballSet' must be provided\",",
+											"        \"Property 'totalWinners' must be provided\",",
+											"        \"Property 'totalTicketsSold' must be provided\",",
+											"        \"Property 'outcome' must one of the expected values: undefined\"",
+											"    ])",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "742f7622-06e5-41a5-b768-164f3e3fd04f",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/api/insertNewDrawResult"
+							},
+							"response": []
+						},
+						{
+							"name": "InsertNewDrawResult- Unknown lotteryType",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "735bcd07-fd9f-4e91-be04-111022689694",
+										"exec": [
+											"pm.test(\"Response status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the error field\", function () {",
+											"    const responseData = pm.response.json();",
+											"",
+											"    pm.expect(responseData.errors).to.exist;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the required error message\", function () {",
+											"    const responseData = pm.response.json();",
+											"",
+											"    pm.expect(responseData.errors[0]).to.equal(",
+											"        \"Property 'lotteryType' must be provided and of a set type: unknown lottery\"",
+											"    )",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "aeacb89d-ee3d-4a11-89a5-2d0b7189c8ec",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"lotteryType\": \"unknown lottery\",\n    \"date\": \"10-10-2010\",\n    \"drawNumber\": \"1234\",\n    \"jackpot\": \"€0,000,000\",\n    \"ballMachine\": \"0101\",\n    \"ballSet\": \"E1\",\n    \"totalWinners\": \"1234566778\",\n    \"totalTicketsSold\": \"123456789\",\n    \"outcome\": \"Rollover!\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/api/insertNewDrawResult"
+							},
+							"response": []
+						}
+					],
+					"id": "a18040f4-76fa-4297-8028-85e28e014209",
+					"description": "Adding tests for the main draw table. Currently called NewDrawTable"
+				},
+				{
+					"name": "Tests for NormalNumber",
+					"item": [
+						{
+							"name": "Normal Num- Missing drawId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "e1c75ac0-b724-4c8d-88c1-8e8c8b00945b",
+										"exec": [
+											"pm.test(\"Response status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the error field\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors).to.exist;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the required error message\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'drawResultId' must be provided and an int: undefined\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "ea789863-0d2c-485f-85d1-10c9d6dce0ad",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"number\": \"5\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/api/insertNewNormalNumber"
+							},
+							"response": []
+						},
+						{
+							"name": "Normal Num- Missing number",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "e1c75ac0-b724-4c8d-88c1-8e8c8b00945b",
+										"exec": [
+											"pm.test(\"Response status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the error field\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors).to.exist;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the required error message\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'number' must be provided and between 0 and 12: undefined\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "9e41fbef-b801-4c90-bbdc-44ad728ee176",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"drawResultId\": {{test_draw_id}}\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/api/insertNewNormalNumber"
+							},
+							"response": []
+						},
+						{
+							"name": "Normal Num- Number out of range",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "e1c75ac0-b724-4c8d-88c1-8e8c8b00945b",
+										"exec": [
+											"pm.test(\"Response status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the error field\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors).to.exist;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the required error message\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'number' must be provided and between 0 and 12: 45\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "27f7223f-8015-47ef-9d73-1d33634d038b",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"number\": \"45\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/api/insertNewNormalNumber"
+							},
+							"response": []
+						},
+						{
+							"name": "Normal Num- Number is 0",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "e1c75ac0-b724-4c8d-88c1-8e8c8b00945b",
+										"exec": [
+											"pm.test(\"Response status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the error field\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors).to.exist;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the required error message\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'number' must be provided and between 0 and 12: 0\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "68450349-657f-4737-a65e-311a7df71687",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"number\": \"0\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/api/insertNewNormalNumber"
+							},
+							"response": []
+						}
+					],
+					"id": "5a14b13d-2692-4a6c-8d55-cfe091039a9d"
+				},
+				{
+					"name": "Tests for Bonus Number",
+					"item": [
+						{
+							"name": "Bonus Num- Missing drawId",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "e1c75ac0-b724-4c8d-88c1-8e8c8b00945b",
+										"exec": [
+											"pm.test(\"Response status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the error field\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors).to.exist;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the required error message\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'drawResultId' must be provided and an int: undefined\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "2ec280e0-cd46-416f-ba83-19b6f8d78876",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"number\": \"5\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/api/insertNewBonusNumber"
+							},
+							"response": []
+						},
+						{
+							"name": "Bonus Num- Missing number",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "e1c75ac0-b724-4c8d-88c1-8e8c8b00945b",
+										"exec": [
+											"pm.test(\"Response status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the error field\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors).to.exist;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the required error message\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'number' must be provided and between 0 and 12: undefined\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "a01c27f0-9b2a-4893-bbd0-0e546e67a9ef",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"drawResultId\": {{test_draw_id}}\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/api/insertNewBonusNumber"
+							},
+							"response": []
+						},
+						{
+							"name": "Bonus Num- Number out of range",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "e1c75ac0-b724-4c8d-88c1-8e8c8b00945b",
+										"exec": [
+											"pm.test(\"Response status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the error field\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors).to.exist;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the required error message\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'number' must be provided and between 0 and 12: 45\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "8f16a9c1-0523-48eb-a664-efe2911eeac2",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"number\": \"45\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/api/insertNewBonusNumber"
+							},
+							"response": []
+						},
+						{
+							"name": "Bonus Num- Number is 0",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "e1c75ac0-b724-4c8d-88c1-8e8c8b00945b",
+										"exec": [
+											"pm.test(\"Response status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the error field\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors).to.exist;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the required error message\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'number' must be provided and between 0 and 12: 0\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "a632efdf-fb40-4aae-996e-84704b467915",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"number\": \"0\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/api/insertNewBonusNumber"
+							},
+							"response": []
+						}
+					],
+					"id": "a9dca773-80d7-4d2f-bd2b-775b5e356e78"
+				},
+				{
+					"name": "Tests for getAllDatesOfDraws",
+					"item": [
+						{
+							"name": "getAllDatesOfDraws- Missing searchYear",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "187458ea-542f-4e03-a9dc-62689da8f89c",
+										"exec": [
+											"pm.test(\"Response status code is 400\", function () {",
+											"    pm.expect(pm.response.code).to.equal(400);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the error field\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.error).to.exist;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the required error message\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.error).to.equal(\"Property \\\"searchYear\\\" must be provided and an int: undefined\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "bc521b12-882d-44cb-9608-8b47bd60374d",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/api/getAllDatesOfDraws"
+							},
+							"response": []
+						},
+						{
+							"name": "getAllDatesOfDraws-  searchYear as text",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "187458ea-542f-4e03-a9dc-62689da8f89c",
+										"exec": [
+											"pm.test(\"Response status code is 400\", function () {",
+											"    pm.expect(pm.response.code).to.equal(400);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the error field\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.error).to.exist;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the required error message\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.error).to.equal(\"Property \\\"searchYear\\\" must be provided and an int: Nineteen Ninty Nine\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "28d2df66-0313-4c7d-af98-5e02363819f9",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"searchYear\": \"Nineteen Ninty Nine\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/api/getAllDatesOfDraws"
+							},
+							"response": []
+						}
+					],
+					"id": "b58645b7-26af-42c5-b11a-ac8ee7356aec"
+				},
+				{
+					"name": "Tests for queryDb",
+					"item": [
+						{
+							"name": "queryDB- Missing query",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a0a575df-44ab-4518-9544-a1ad7cedad3d",
+										"exec": [
+											"pm.test(\"Response status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the error field\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.error).to.exist;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Error message has correct response\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.error).to.be.equal(\"Property 'sqlQuery' must be provided : undefined\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "9a9cd843-da27-4465-a787-5bdbba20602b",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/api/queryDB"
+							},
+							"response": []
+						},
+						{
+							"name": "queryDB- Invalid query",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a0a575df-44ab-4518-9544-a1ad7cedad3d",
+										"exec": [
+											"pm.test(\"Response status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the error field\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.error).to.exist;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Jackpot is a non-negative integer\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.error).to.be.equal('The provided SQL query violates a safety check and is not allowed');",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "5eb5b2dc-1c1d-4c7c-8005-c181c0f7d807",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"sqlQuery\": \"Insert * FROM dffdsf ORDER BY id DESC LIMIT 5\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/api/queryDB"
+							},
+							"response": []
+						}
+					],
+					"id": "7380ce99-0c93-422a-9470-bdad1666231c",
+					"description": "These are the tests for the function which sends SQL queries to the database."
+				},
+				{
+					"name": "Success Flow",
+					"item": [
+						{
+							"name": "1. InsertNewDrawResult",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "dc0925e8-1176-4a29-b891-2fe707fef504",
+										"exec": [
+											"const response = pm.response.json();",
+											"",
+											"// pm.collectionVariables.set(\"test_draw_id\", response);",
+											"pm.variables.set(\"test_draw_id\", response);",
+											"",
+											"pm.test(\"Response status code is 200\", function () {",
+											"  pm.expect(pm.response.code).to.equal(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "13d05d07-f1f1-4285-a38b-135883d7351a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"lotteryType\": \"euromillions\",\n    \"date\": \"10-10-2010\",\n    \"drawNumber\": {{test_draw_id}},\n    \"jackpot\": \"€0,000,000\",\n    \"ballMachine\": \"0101\",\n    \"ballSet\": \"E1\",\n    \"totalWinners\": \"1234566778\",\n    \"totalTicketsSold\": \"123456789\",\n    \"outcome\": \"Rollover!\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/api/insertNewDrawResult"
+							},
+							"response": []
+						},
+						{
+							"name": "2. InsertNormalNumber",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "17d8f878-42d7-4008-b5e9-576990cc9658",
+										"exec": [
+											"pm.test(\"Response status code is 200\", function () {",
+											"  pm.expect(pm.response.code).to.equal(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response body is a number\", function () {",
+											"    pm.expect(pm.response.text()).to.match(/^\\d+$/);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response body is greater than or equal to 0\", function () {",
+											"    const responseBody = pm.response.text();",
+											"    ",
+											"    pm.expect(Number(responseBody)).to.be.gte(0);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response time is less than 500ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response body is an integer\", function () {",
+											"    pm.expect(pm.response.text()).to.match(/^\\d+$/);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "96962d81-7bf4-4811-9196-26c98de8707a",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"number\": \"5\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/api/insertNewNormalNumber"
+							},
+							"response": []
+						},
+						{
+							"name": "3. InsertBonusNumber",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "e1c75ac0-b724-4c8d-88c1-8e8c8b00945b",
+										"exec": [
+											"pm.test(\"Response status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the required field 'id'\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.id).to.exist;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Check that id is a non-negative integer\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.id).to.be.a('number').and.to.be.at.least(0);",
+											"});",
+											"",
+											"",
+											"pm.test(\"The id should be unique for each execution\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.id).to.exist.and.to.be.a('number');",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response time is less than 500ms\", function () {",
+											"  pm.expect(pm.response.responseTime).to.be.below(500);",
+											"});",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "45faecc4-d231-4567-bcb3-b5d93c3629ac",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"number\": \"5\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/api/insertNewBonusNumber"
+							},
+							"response": []
+						},
+						{
+							"name": "4. InsertCountryResult",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5a68a41b-fac5-4376-8b27-d1b5edf47f97",
+										"exec": [
+											"pm.test(\"Response status code is 200\", function() {",
+											"    pm.expect(pm.response.code).to.equal(200);",
+											"});",
+											"",
+											"pm.test(\"Response body is a number\", function () {",
+											"    pm.expect(pm.response.json()).to.be.a('number');",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response time is less than 500ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response is not empty\", function () {",
+											"  pm.expect(pm.response.text()).to.not.be.empty;",
+											"});",
+											"",
+											"",
+											"pm.test(\"The response is greater than or equal to 0\", function () {",
+											"    pm.expect(pm.response.json()).to.be.at.least(0);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "3394e5af-186c-4853-88ce-93568e6508ae",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"country\": \"ie\",\n    \"numbersMatched\": \"0 + 0\",\n    \"countrySpecificWinners\": \"00\",\n    \"prizesPerWinner\": \"€000,000\",\n    \"totalWinners\": \"000\",\n    \"prizeFundAmount\": \"0000\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/api/insertNewCountryResult"
+							},
+							"response": []
+						},
+						{
+							"name": "5. removeDrawDetails",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "7d16277f-7c84-49e8-a7c1-40a9416cab85",
+										"exec": [
+											"pm.test(\"Response status code is 200\", function () {",
+											"  pm.expect(pm.response.code).to.equal(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the required field - message\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.message).to.exist;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Message is a non-empty string\", function () {",
+											"    const responseData = pm.response.json();",
+											"    console.log(responseData.message);",
+											"",
+											"    pm.expect(responseData.message).to.be.a('string').and.to.equal(\"Records deleted successfully\");",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response time is less than 500ms\", function () {",
+											"  pm.expect(pm.response.responseTime).to.be.below(500);",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "4eea8f34-9c6f-422b-9330-a401ef253c98",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"drawNumber\": 1676\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/api/removeDrawDetails"
+							},
+							"response": []
+						}
+					],
+					"id": "70e8532a-7ebb-45e9-82e6-84ff77cb482d"
+				}
+			],
+			"id": "538f994a-fab4-41eb-9afc-7210ebacff70"
+		},
+		{
+			"name": "Api Calls",
+			"item": [
+				{
+					"name": "InsertNewDrawResult",
+					"id": "6c355afa-aadc-4689-96b5-1156ce33fc9a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"lotteryType\": \"euromillions\",\n    \"date\": \"10-10-2010\",\n    \"drawNumber\": {{test_draw_id}},\n    \"jackpot\": \"€0,000,000\",\n    \"ballMachine\": \"0101\",\n    \"ballSet\": \"E1\",\n    \"totalWinners\": \"1234566778\",\n    \"totalTicketsSold\": \"123456789\",\n    \"outcome\": \"Rollover!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/api/insertNewDrawResult"
+					},
+					"response": []
+				},
+				{
+					"name": "InsertNormalNumber",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "17d8f878-42d7-4008-b5e9-576990cc9658",
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"  pm.expect(pm.response.code).to.equal(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response body is a number\", function () {",
+									"    pm.expect(pm.response.text()).to.match(/^\\d+$/);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response body is greater than or equal to 0\", function () {",
+									"    const responseBody = pm.response.text();",
+									"    ",
+									"    pm.expect(Number(responseBody)).to.be.gte(0);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 500ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response body is an integer\", function () {",
+									"    pm.expect(pm.response.text()).to.match(/^\\d+$/);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "25fb8c52-373d-45b9-8ddc-9e5b6cdb0f77",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"number\": \"5\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/api/insertNewNormalNumber"
+					},
+					"response": []
+				},
+				{
+					"name": "InsertBonusNumber",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e1c75ac0-b724-4c8d-88c1-8e8c8b00945b",
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response has the required field 'id'\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.id).to.exist;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Check that id is a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.id).to.be.a('number').and.to.be.at.least(0);",
+									"});",
+									"",
+									"",
+									"pm.test(\"The id should be unique for each execution\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.id).to.exist.and.to.be.a('number');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 500ms\", function () {",
+									"  pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "9522cc94-89fe-4d01-9251-e8d80cedc123",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"number\": \"5\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/api/insertNewBonusNumber"
+					},
+					"response": []
+				},
+				{
+					"name": "InsertCountryResult",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5a68a41b-fac5-4376-8b27-d1b5edf47f97",
+								"exec": [
+									"pm.test(\"Response status code is 200\", function() {",
+									"    pm.expect(pm.response.code).to.equal(200);",
+									"});",
+									"",
+									"pm.test(\"Response body is a number\", function () {",
+									"    pm.expect(pm.response.json()).to.be.a('number');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 500ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response is not empty\", function () {",
+									"  pm.expect(pm.response.text()).to.not.be.empty;",
+									"});",
+									"",
+									"",
+									"pm.test(\"The response is greater than or equal to 0\", function () {",
+									"    pm.expect(pm.response.json()).to.be.at.least(0);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "6d1d92af-1bcd-490d-ac8d-4b9b517f6f55",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"country\": \"ie\",\n    \"numbersMatched\": \"0 + 0\",\n    \"countrySpecificWinners\": \"00\",\n    \"prizesPerWinner\": \"€000,000\",\n    \"totalWinners\": \"000\",\n    \"prizeFundAmount\": \"0000\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/api/insertNewCountryResult"
+					},
+					"response": []
+				},
+				{
+					"name": "removeDrawDetails",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7d16277f-7c84-49e8-a7c1-40a9416cab85",
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"  pm.expect(pm.response.code).to.equal(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response has the required field - message\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('object');",
+									"    pm.expect(responseData.message).to.exist;",
+									"});",
+									"",
+									"",
+									"pm.test(\"Message is a non-empty string\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData.message).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is less than 500ms\", function () {",
+									"  pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Verify that the request body is empty\", function () {",
+									"  pm.expect(pm.request.body).to.be.empty;",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "ff88b217-074f-4d44-83da-ee084edabf61",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"drawNumber\": {{test_draw_id}}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/api/removeDrawDetails"
+					},
+					"response": []
+				},
+				{
+					"name": "queryDB",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a0a575df-44ab-4518-9544-a1ad7cedad3d",
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Validate the response body is an array\", function () {",
+									"  const responseData = pm.response.json();",
+									"",
+									"  pm.expect(responseData).to.be.an('array');",
+									"});",
+									"",
+									"",
+									"pm.test(\"Jackpot is a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('array');",
+									"    responseData.forEach(function (item) {",
+									"        pm.expect(item.jackpot).to.be.a('number').and.to.be.at.least(0);",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"TotalTicketsSold is a non-negative integer\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('array');",
+									"    responseData.forEach(function(item) {",
+									"        pm.expect(item.totalTicketsSold).to.be.a('number').and.to.be.at.least(0);",
+									"    });",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "15c729eb-3950-45bc-88da-d00405ed007b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"sqlQuery\": \"SELECT * FROM NewDrawResult\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/api/queryDB"
+					},
+					"response": []
+				},
+				{
+					"name": "getAllDatesOfDraws",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "187458ea-542f-4e03-a9dc-62689da8f89c",
+								"exec": [
+									"pm.test(\"Response status code is 200\", function () {",
+									"    pm.expect(pm.response.code).to.equal(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response is an array with at least one element\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('array').and.to.have.lengthOf.at.least(1);",
+									"});",
+									"",
+									"",
+									"pm.test(\"Each element in the response array has the required field 'date'\", function () {",
+									"    const responseData = pm.response.json();",
+									"",
+									"    pm.expect(responseData).to.be.an('array');",
+									"    responseData.forEach(function (element) {",
+									"        pm.expect(element.date).to.exist;",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Each 'date' field is in a valid date format\", function () {",
+									"    const responseData = pm.response.json();",
+									"    ",
+									"    pm.expect(responseData).to.be.an('array');",
+									"    responseData.forEach(function(item){",
+									"        pm.expect(item.date).to.match(/^\\d{4}-\\d{2}-\\d{2}$/);",
+									"    });",
+									"});",
+									"",
+									"",
+									"pm.test(\"Response time is within acceptable range\", function () {",
+									"  pm.expect(pm.response.responseTime).to.be.below(500);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"id": "9a0f00a2-d218-48dc-9a28-d056b2a060f6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"searchYear\": \"2023\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{url}}/api/getAllDatesOfDraws"
+					},
+					"response": []
+				}
+			],
+			"id": "ab7eeb06-d23e-4179-ac33-21fa7a2e68fb"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "d7e0fbc5-b113-437c-ae4e-f253212cbca5",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "4687769e-649d-469f-8286-f1e4d8f907c1",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "test_draw_id",
+			"value": "9999999",
+			"type": "string"
+		}
+	]
+}
