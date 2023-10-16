@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "4d21c5ac-3018-4c4a-ac90-543bdb828af7",
-		"name": "Lottery Selector",
+		"name": "LotterySelector",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
@@ -1696,7 +1696,10 @@
 											"pm.variables.set(\"test_draw_id\", response);",
 											"",
 											"pm.test(\"Response status code is 200\", function () {",
-											"  pm.expect(pm.response.code).to.equal(200);",
+											"    pm.expect(pm.response.code).to.equal(200);",
+											"    if (pm.response.code !== 200) {",
+											"        postman.setNextRequest(\"6. End\")",
+											"    }",
 											"});"
 										],
 										"type": "text/javascript"
@@ -1733,6 +1736,7 @@
 										"exec": [
 											"pm.test(\"Response status code is 200\", function () {",
 											"  pm.expect(pm.response.code).to.equal(200);",
+											"",
 											"});",
 											"",
 											"",
