@@ -2,6 +2,7 @@ import React from 'react';
 
 const EmptySlots = ({ selectedNumbers, onUnselect, numberType }) => {
 
+    selectedNumbers = !selectedNumbers ? [null, null,null,null,null] : selectedNumbers;
     return (
         <div className="empty-slots">
             {selectedNumbers.map((num, index) => (
