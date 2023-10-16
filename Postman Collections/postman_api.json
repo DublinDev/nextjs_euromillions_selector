@@ -1958,6 +1958,65 @@
 								"url": "{{url}}/api/removeDrawDetails"
 							},
 							"response": []
+						},
+						{
+							"name": "6. End",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "7d16277f-7c84-49e8-a7c1-40a9416cab85",
+										"exec": [
+											"pm.test(\"Response status code is 200\", function () {",
+											"  pm.expect(pm.response.code).to.equal(200);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the required field - message\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.message).to.exist;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Message is a non-empty string\", function () {",
+											"    const responseData = pm.response.json();",
+											"    console.log(responseData.message);",
+											"",
+											"    pm.expect(responseData.message).to.be.a('string').and.to.equal(\"Records deleted successfully\");",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response time is less than 500ms\", function () {",
+											"  pm.expect(pm.response.responseTime).to.be.below(500);",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "b1be5975-23fc-4a5c-9d11-4467d714a45b",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"drawNumber\": {{test_draw_id}}\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/api/removeDrawDetails"
+							},
+							"response": []
 						}
 					],
 					"id": "70e8532a-7ebb-45e9-82e6-84ff77cb482d"
