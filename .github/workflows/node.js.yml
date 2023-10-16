@@ -39,6 +39,5 @@ jobs:
       run: sleep 15s
       # This is a simple way to wait, but you might want to use a more robust approach, such as polling an endpoint.
 
-    - name: Run e2e tests
-      run: npm run test:e2e
-      # Replace with your e2e test command.
+    - name: Run api tests
+      run: npm run test:api
