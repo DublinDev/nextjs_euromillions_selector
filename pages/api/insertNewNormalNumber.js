@@ -1,41 +1,37 @@
 import { insert } from '../../lib/db/insert';
 
-export default (req, res) => {
-    return new Promise((resolve, reject) => {
+export default async (req, res) => {
+    // List of errors
+    const errors = [];
 
-        let errors = [];
+    // Check drawResultId
+    if (!req.body.drawResultId || isNaN(req.body.drawResultId)) {
+        errors.push(`Property 'drawResultId' must be provided and an int: ${req.body.drawResultId}`);
+    }
 
-        // Check request method first
-        if (req.method !== 'POST') {
-            res.status(405).end(); // Method Not Allowed
-            resolve();
-        }
+    // Check number
+    if (!req.body.number || isNaN(req.body.number) || (req.body.number <= 0 || req.body.number > 50)) {
+        errors.push(`Property 'number' must be provided and between 1 and 50: ${req.body.number}`);
+    }
 
-        if (!req.body.number || !(req.body.number >= 1 && req.body.number <= 12)) {
-            errors.push(`Property 'number' must be provided and between 0 and 12: ${req.body.number}`);
-        }
-        if (!req.body.drawResultId || isNaN(req.body.drawResultId)) {
-            errors.push(`Property 'drawResultId' must be provided and an int: ${req.body.drawResultId}`);
-        }
+    // If there are errors, return them
+    if (errors.length > 0) {
+        return res.status(400).json({ errors });
+    }
 
-        if (errors.length > 0) {
-            res.status(400).json({ errors });
-            resolve();
-        }
+    // Construct the query and values for the insert operation
+    const valuesArr = [req.body.drawResultId, req.body.number];
+    const insertQuery = `INSERT INTO NormalNumber(drawResultId, number) VALUES(?,?)`;
 
+    if (req.method === 'POST') {
         try {
-            const valuesArr = [req.body.drawResultId, req.body.number];
-            const insertQuery = `INSERT INTO NormalNumber(drawResultId, number) VALUES(?,?)`;
-
-            insert((results) => {
-                console.log(results);
-                res.status(200).json(results);
-                resolve();
-            }, insertQuery, valuesArr);
-
-        } catch (err) {
-            console.log(`Err: ${err}`);
-            resolve();
+            // Use the promise-based insert function
+            const results = await insert(insertQuery, valuesArr);
+            return res.status(200).json(results);
+        } catch (error) {
+            return res.status(500).json({ error });
         }
-    });
+    } else {
+        return res.status(405).end(); // Method Not Allowed
+    }
 };

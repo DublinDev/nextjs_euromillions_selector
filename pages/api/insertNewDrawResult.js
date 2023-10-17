@@ -1,7 +1,7 @@
 import { insert } from '../../lib/db/insert';
 import { LOTTERY_TYPES, JACKPOT_OUTCOME_OPTIONS } from '../../utils/constants';
 
-export default (req, res) => {
+export default async (req, res) => {
 
 
     const expectedValues = [
@@ -65,9 +65,12 @@ export default (req, res) => {
     const insertQuery = `INSERT INTO NewDrawResult(lotteryType,date,drawNumber,jackpot,ballMachine,ballSet,totalWinners,totalTicketsSold,outcome)
     VALUES(?,?,?,?,?,?,?,?,?)`;
 
-    insert((results) => {
-        console.log(results);
+    try {
+        // Use the promise-based insert function
+        const results = await insert(insertQuery, valuesArr);
         return res.status(200).json(results);
-    }, insertQuery, valuesArr);
+    } catch (error) {
+        return res.status(500).json({ error });
+    }
 
 };

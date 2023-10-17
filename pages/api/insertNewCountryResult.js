@@ -1,7 +1,7 @@
 import { insert } from '../../lib/db/insert';
 import { COUNTRY_CODES } from '../../utils/constants';
 
-export default (req, res) => {
+export default async (req, res) => {
 
     const expectedValues = [
         "drawResultId",
@@ -50,8 +50,11 @@ export default (req, res) => {
     const insertQuery = `INSERT INTO CountryResult(drawResultId, country, numbersMatched, countrySpecificWinners, prizesPerWinner, totalWinners, prizeFundAmount)
     VALUES(?,?,?,?,?,?,?)`;
 
-    insert((results) => {
-        console.log(results);
+    try {
+        // Use the promise-based insert function
+        const results = await insert(insertQuery, valuesArr);
         return res.status(200).json(results);
-    }, insertQuery, valuesArr);
+    } catch (error) {
+        return res.status(500).json({ error });
+    }
 };
