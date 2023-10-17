@@ -5,7 +5,7 @@
     "dev": "next dev",
     "start": "next start",
     "test:e2e": "playwright test",
-    "test:api": "newman run tests/API/LotterySelector.postman_collection.json -e \"tests/API/Lottery Project- prod.postman_environment.json\" --folder Tests"
+    "test:api": "newman run tests/API/LotterySelector.postman_collection.json -e tests/API/LotteryProject-dev.postman_environment.json --folder Tests"
   },
   "dependencies": {
     "next": "latest",

@@ -7,15 +7,10 @@ export default async function deleteDraw(req, res) {
         return res.status(405).json({ error: 'Method Not Allowed' });
     }
 
-    if (!req.body.drawNumber || isNaN(req.body.drawNumber)) {
-        throw new Error(`Property "drawNumber" must be provided and above 0`);
-    }
-
-    // Extract the draw number from the request body
     const { drawNumber } = req.body;
 
-    if (!drawNumber) {
-        return res.status(400).json({ error: 'Draw number is required' });
+    if (!drawNumber || isNaN(drawNumber)) {
+        return res.status(405).json({ error: `Property "drawNumber" must be provided and above 0: ${drawNumber}` });
     }
 
     // List of tables to delete the records from
