@@ -1942,7 +1942,9 @@
 											"  pm.expect(pm.response.responseTime).to.be.below(500);",
 											"});",
 											"",
-											""
+											"if(pm.response.code !== 200){",
+											"    console.log(JSON.stringify(pm.response, null, 2));",
+											"}"
 										],
 										"type": "text/javascript"
 									}
