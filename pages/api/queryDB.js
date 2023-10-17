@@ -1,6 +1,6 @@
 import { generalQuery } from '../../lib/db/query';
 
-export default (req, res) => {
+export default async (req, res) => {
 
     // Check request method first
     if (req.method !== 'POST') {
@@ -18,10 +18,12 @@ export default (req, res) => {
         }
     }
 
-    generalQuery((results) => {
-        console.log('--------------');
+    try {
+        // Use the promise-based insert function
+        const results = await generalQuery(req.body.sqlQuery);
         console.log(results);
-        console.log('--------------');
-        res.status(200).json(results);
-    }, req.body.sqlQuery);
+        return res.status(200).json(results);
+    } catch (error) {
+        return res.status(500).json({ error });
+    }
 };
