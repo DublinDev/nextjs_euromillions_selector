@@ -12,6 +12,11 @@ This is a basic project to allow users to query all previous numbers of euromill
 `npm run dev`
 
 
+## Database
+The database is continually updated by the python lottery scraper.
+The apis can be used to intereact with the database.
+
+
 ## ToDo
 
 * Implement CHatGPT moderation filter
