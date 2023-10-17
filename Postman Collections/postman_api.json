@@ -1692,16 +1692,17 @@
 										"exec": [
 											"const response = pm.response.json();",
 											"",
-											"// pm.collectionVariables.set(\"test_draw_id\", response);",
-											"pm.variables.set(\"test_draw_id\", response);",
 											"",
 											"pm.test(\"Response status code is 200\", function () {",
 											"    pm.expect(pm.response.code).to.equal(200);",
-											"    ",
-											"    if (pm.response.code !== 200) {",
-											"        postman.setNextRequest(\"6. End\");",
-											"    }",
-											"});"
+											"});",
+											"",
+											"if (pm.response.code !== 200) {",
+											"    postman.setNextRequest(\"6. End\");",
+											"}",
+											"// pm.collectionVariables.set(\"test_draw_id\", response);",
+											"pm.variables.set(\"test_draw_id\", response);",
+											""
 										],
 										"type": "text/javascript"
 									}
