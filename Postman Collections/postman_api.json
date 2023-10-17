@@ -2375,7 +2375,7 @@
 									"    ",
 									"    pm.expect(responseData).to.be.an('array');",
 									"    responseData.forEach(function(item){",
-									"        pm.expect(item.date).to.match(/^\\d{4}-\\d{2}-\\d{2}$/);",
+									"        pm.expect(item.date).to.match(/^\\d{2}-\\d{2}-\\d{4}$/);",
 									"    });",
 									"});",
 									"",
