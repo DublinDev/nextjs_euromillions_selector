@@ -2166,12 +2166,14 @@
 							"script": {
 								"id": "5a68a41b-fac5-4376-8b27-d1b5edf47f97",
 								"exec": [
+									"const response = pm.response.json();",
+									"",
 									"pm.test(\"Response status code is 200\", function() {",
 									"    pm.expect(pm.response.code).to.equal(200);",
 									"});",
 									"",
 									"pm.test(\"Response body is a number\", function () {",
-									"    pm.expect(pm.response.json()).to.be.a('number');",
+									"    pm.expect(response['id']).to.be.a('number');",
 									"});",
 									"",
 									"",
@@ -2186,7 +2188,7 @@
 									"",
 									"",
 									"pm.test(\"The response is greater than or equal to 0\", function () {",
-									"    pm.expect(pm.response.json()).to.be.at.least(0);",
+									"    pm.expect(response.id).to.be.at.least(0);",
 									"});"
 								],
 								"type": "text/javascript"
