@@ -1188,7 +1188,7 @@
 											"pm.test(\"Response has the required error message\", function () {",
 											"    const responseData = pm.response.json();",
 											"    ",
-											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'number' must be provided and between 0 and 12: undefined\");",
+											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'number' must be provided and between 1 and 50: undefined\");",
 											"});",
 											"",
 											""
@@ -1244,7 +1244,7 @@
 											"pm.test(\"Response has the required error message\", function () {",
 											"    const responseData = pm.response.json();",
 											"    ",
-											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'number' must be provided and between 0 and 12: 45\");",
+											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'number' must be provided and between 1 and 50: 59\");",
 											"});",
 											"",
 											""
@@ -1258,7 +1258,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"number\": \"45\"\n}",
+									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"number\": \"59\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1300,7 +1300,7 @@
 											"pm.test(\"Response has the required error message\", function () {",
 											"    const responseData = pm.response.json();",
 											"    ",
-											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'number' must be provided and between 0 and 12: 0\");",
+											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'number' must be provided and between 1 and 50: 0\");",
 											"});",
 											"",
 											""
@@ -1819,7 +1819,7 @@
 											"    postman.setNextRequest(\"6. End\");",
 											"}",
 											"// pm.collectionVariables.set(\"test_draw_id\", response);",
-											"pm.variables.set(\"test_draw_id\", response);",
+											"pm.variables.set(\"test_draw_id\", response.id);",
 											""
 										],
 										"type": "text/javascript"
@@ -1858,21 +1858,22 @@
 									"listen": "test",
 									"script": {
 										"exec": [
+											"const response = pm.response.json();",
+											"console.log(response);",
+											"",
 											"pm.test(\"Response status code is 200\", function () {",
 											"  pm.expect(pm.response.code).to.equal(200);",
-											"",
 											"});",
 											"",
 											"",
-											"pm.test(\"Response body is a number\", function () {",
-											"    pm.expect(pm.response.text()).to.match(/^\\d+$/);",
+											"pm.test(\"Response body contains id property of a number\", function () {",
+											"    pm.expect(response).to.haveOwnProperty('id');",
+											"    pm.expect(response[\"id\"]).to.match(/^\\d+$/);",
 											"});",
 											"",
 											"",
-											"pm.test(\"Response body is greater than or equal to 0\", function () {",
-											"    const responseBody = pm.response.text();",
-											"    ",
-											"    pm.expect(Number(responseBody)).to.be.gte(0);",
+											"pm.test(\"Returned ID is greater than or equal to 0\", function () {    ",
+											"    pm.expect(Number(response[\"id\"])).to.be.gte(0);",
 											"});",
 											"",
 											"",
@@ -1881,8 +1882,8 @@
 											"});",
 											"",
 											"",
-											"pm.test(\"Response body is an integer\", function () {",
-											"    pm.expect(pm.response.text()).to.match(/^\\d+$/);",
+											"pm.test(\"Returned ID is an integer\", function () {",
+											"    pm.expect(response[\"id\"]).to.match(/^\\d+$/);",
 											"});"
 										],
 										"type": "text/javascript"
@@ -1989,12 +1990,14 @@
 									"listen": "test",
 									"script": {
 										"exec": [
+											"const response = pm.response.json();",
+											"",
 											"pm.test(\"Response status code is 200\", function() {",
 											"    pm.expect(pm.response.code).to.equal(200);",
 											"});",
 											"",
-											"pm.test(\"Response body is a number\", function () {",
-											"    pm.expect(pm.response.json()).to.be.a('number');",
+											"pm.test(\"Returned ID is a number\", function () {",
+											"    pm.expect(response['id']).to.be.a('number');",
 											"});",
 											"",
 											"",
@@ -2008,8 +2011,8 @@
 											"});",
 											"",
 											"",
-											"pm.test(\"The response is greater than or equal to 0\", function () {",
-											"    pm.expect(pm.response.json()).to.be.at.least(0);",
+											"pm.test(\"The returned id is greater than or equal to 0\", function () {",
+											"    pm.expect(response.id).to.be.at.least(0);",
 											"});"
 										],
 										"type": "text/javascript"
@@ -2073,7 +2076,9 @@
 											"  pm.expect(pm.response.responseTime).to.be.below(500);",
 											"});",
 											"",
-											""
+											"if(pm.response.code !== 200){",
+											"    console.log(JSON.stringify(pm.response, null, 2));",
+											"}"
 										],
 										"type": "text/javascript"
 									}
@@ -2183,20 +2188,22 @@
 							"listen": "test",
 							"script": {
 								"exec": [
+									"const response = pm.response.json();",
+									"console.log(response);",
+									"",
 									"pm.test(\"Response status code is 200\", function () {",
 									"  pm.expect(pm.response.code).to.equal(200);",
 									"});",
 									"",
 									"",
-									"pm.test(\"Response body is a number\", function () {",
-									"    pm.expect(pm.response.text()).to.match(/^\\d+$/);",
+									"pm.test(\"Response body contains id property of a number\", function () {",
+									"    pm.expect(response).to.haveOwnProperty('id');",
+									"    pm.expect(response[\"id\"]).to.match(/^\\d+$/);",
 									"});",
 									"",
 									"",
-									"pm.test(\"Response body is greater than or equal to 0\", function () {",
-									"    const responseBody = pm.response.text();",
-									"    ",
-									"    pm.expect(Number(responseBody)).to.be.gte(0);",
+									"pm.test(\"Returned ID is greater than or equal to 0\", function () {    ",
+									"    pm.expect(Number(response[\"id\"])).to.be.gte(0);",
 									"});",
 									"",
 									"",
@@ -2205,8 +2212,8 @@
 									"});",
 									"",
 									"",
-									"pm.test(\"Response body is an integer\", function () {",
-									"    pm.expect(pm.response.text()).to.match(/^\\d+$/);",
+									"pm.test(\"Returned ID is an integer\", function () {",
+									"    pm.expect(response[\"id\"]).to.match(/^\\d+$/);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -2313,12 +2320,14 @@
 							"listen": "test",
 							"script": {
 								"exec": [
+									"const response = pm.response.json();",
+									"",
 									"pm.test(\"Response status code is 200\", function() {",
 									"    pm.expect(pm.response.code).to.equal(200);",
 									"});",
 									"",
-									"pm.test(\"Response body is a number\", function () {",
-									"    pm.expect(pm.response.json()).to.be.a('number');",
+									"pm.test(\"Returned ID is a number\", function () {",
+									"    pm.expect(response['id']).to.be.a('number');",
 									"});",
 									"",
 									"",
@@ -2332,8 +2341,8 @@
 									"});",
 									"",
 									"",
-									"pm.test(\"The response is greater than or equal to 0\", function () {",
-									"    pm.expect(pm.response.json()).to.be.at.least(0);",
+									"pm.test(\"The returned id is greater than or equal to 0\", function () {",
+									"    pm.expect(response.id).to.be.at.least(0);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -2529,7 +2538,7 @@
 									"    ",
 									"    pm.expect(responseData).to.be.an('array');",
 									"    responseData.forEach(function(item){",
-									"        pm.expect(item.date).to.match(/^\\d{4}-\\d{2}-\\d{2}$/);",
+									"        pm.expect(item.date).to.match(/^\\d{2}-\\d{2}-\\d{4}$/);",
 									"    });",
 									"});",
 									"",

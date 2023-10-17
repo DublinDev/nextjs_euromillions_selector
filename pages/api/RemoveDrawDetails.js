@@ -30,14 +30,8 @@ export default async function deleteDraw(req, res) {
         for (let queryString of quieries) {
             const values = [drawNumber];
 
-            // Use a promise to handle asynchronous DB operations
-            await new Promise((resolve, reject) => {
-                removeFromDB((rows) => {
-                    console.log(`Removed entry for ${values}`);
-                    // If you need to handle the result, you can do so here
-                    resolve(rows);
-                }, queryString, values);
-            });
+            const response = await removeFromDB(queryString, values);
+            console.log(response);
         }
 
         // Send a success response after all delete operations are successful
