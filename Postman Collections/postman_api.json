@@ -1110,7 +1110,7 @@
 											"pm.test(\"Response has the required error message\", function () {",
 											"    const responseData = pm.response.json();",
 											"    ",
-											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'number' must be provided and be a valid integer: undefined\");",
+											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'number' must be provided and between 1 and 50: undefined\");",
 											"});",
 											"",
 											""
@@ -1162,7 +1162,7 @@
 											"pm.test(\"Response has the required error message\", function () {",
 											"    const responseData = pm.response.json();",
 											"    ",
-											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'number' must be provided and between 0 and 12: 45\");",
+											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'number' must be provided and between 1 and 50: 59\");",
 											"});",
 											"",
 											""
@@ -1180,7 +1180,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"number\": \"45\"\n}",
+									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"number\": \"59\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1214,7 +1214,7 @@
 											"pm.test(\"Response has the required error message\", function () {",
 											"    const responseData = pm.response.json();",
 											"    ",
-											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'number' must be provided and between 0 and 12: 0\");",
+											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'number' must be provided and between 1 and 50: 0\");",
 											"});",
 											"",
 											""
