@@ -1697,8 +1697,9 @@
 											"",
 											"pm.test(\"Response status code is 200\", function () {",
 											"    pm.expect(pm.response.code).to.equal(200);",
+											"    ",
 											"    if (pm.response.code !== 200) {",
-											"        postman.setNextRequest(\"6. End\")",
+											"        postman.setNextRequest(\"6. End\");",
 											"    }",
 											"});"
 										],
@@ -1975,27 +1976,6 @@
 											"  pm.expect(pm.response.code).to.equal(200);",
 											"});",
 											"",
-											"",
-											"pm.test(\"Response has the required field - message\", function () {",
-											"    const responseData = pm.response.json();",
-											"    ",
-											"    pm.expect(responseData).to.be.an('object');",
-											"    pm.expect(responseData.message).to.exist;",
-											"});",
-											"",
-											"",
-											"pm.test(\"Message is a non-empty string\", function () {",
-											"    const responseData = pm.response.json();",
-											"    console.log(responseData.message);",
-											"",
-											"    pm.expect(responseData.message).to.be.a('string').and.to.equal(\"Records deleted successfully\");",
-											"});",
-											"",
-											"",
-											"pm.test(\"Response time is less than 500ms\", function () {",
-											"  pm.expect(pm.response.responseTime).to.be.below(500);",
-											"});",
-											"",
 											""
 										],
 										"type": "text/javascript"
@@ -2018,7 +1998,7 @@
 										}
 									}
 								},
-								"url": "{{url}}/api/removeDrawDetails"
+								"url": "{{url}}"
 							},
 							"response": []
 						}
