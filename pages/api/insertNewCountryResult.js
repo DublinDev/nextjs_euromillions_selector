@@ -11,6 +11,7 @@ export default async (req, res) => {
         "prizesPerWinner",
         "totalWinners",
         "prizeFundAmount",
+        "prizeCurrency"
     ]
     let errors = [];
 
@@ -42,13 +43,17 @@ export default async (req, res) => {
         errors.push(`Property 'prizeFundAmount' must be provided: ${req.body.prizeFundAmount}`);
     }
 
+    if (!req.body.prizeCurrency/* || isNaN(prizeFundAmount)*/) {
+        errors.push(`Property 'prizeCurrency' must be provided: ${req.body.prizeCurrency}`);
+    }
+
     if (errors.length > 0) {
         return res.status(400).json({ errors });
     }
 
     const valuesArr = expectedValues.map(key => req.body[key]);
-    const insertQuery = `INSERT INTO CountryResult(drawResultId, country, numbersMatched, countrySpecificWinners, prizesPerWinner, totalWinners, prizeFundAmount)
-    VALUES(?,?,?,?,?,?,?)`;
+    const insertQuery = `INSERT INTO CountryResult(drawResultId, country, numbersMatched, countrySpecificWinners, prizesPerWinner, totalWinners, prizeFundAmount, prizeCurrency)
+    VALUES(?,?,?,?,?,?,?,?)`;
 
     try {
         // Use the promise-based insert function
