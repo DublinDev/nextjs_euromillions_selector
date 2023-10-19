@@ -376,6 +376,58 @@
 							"response": []
 						},
 						{
+							"name": "InsertCountryResult- Missing prizeCurrency",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "5a68a41b-fac5-4376-8b27-d1b5edf47f97",
+										"exec": [
+											"pm.test(\"Response status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the error field\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors).to.exist;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the required error message\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'prizeCurrency' must be provided: undefined\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "1c150be9-dd35-43f4-9fac-67bc1e2f2dac",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"country\": \"ie\",\n    \"numbersMatched\": \"0 + 0\",\n    \"countrySpecificWinners\": \"00\",\n    \"prizesPerWinner\": \"€000,000\",\n    \"totalWinners\": \"000\",\n    \"prizeFundAmount\": \"0000\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{url}}/api/insertNewCountryResult"
+							},
+							"response": []
+						},
+						{
 							"name": "InsertCountryResult- Missing multiple parameters",
 							"event": [
 								{
@@ -412,62 +464,6 @@
 								}
 							],
 							"id": "2460928f-be60-4ae9-8486-ca1ce2fa4f61",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"countrySpecificWinners\": \"00\",\n    \"prizesPerWinner\": \"€000,000\",\n    \"totalWinners\": \"000\",\n    \"prizeCurrency\": \"€\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{url}}/api/insertNewCountryResult"
-							},
-							"response": []
-						},
-						{
-							"name": "InsertCountryResult- Missing multiple parameters Copy",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "5a68a41b-fac5-4376-8b27-d1b5edf47f97",
-										"exec": [
-											"pm.test(\"Response status code is 400\", function () {",
-											"    pm.response.to.have.status(400);",
-											"});",
-											"",
-											"",
-											"pm.test(\"Response has the error field\", function () {",
-											"    const responseData = pm.response.json();",
-											"    ",
-											"    pm.expect(responseData.errors).to.exist;",
-											"});",
-											"",
-											"",
-											"pm.test(\"Response has the required error messages\", function () {",
-											"    const responseData = pm.response.json();",
-											"    ",
-											"    pm.expect(responseData.errors.length).to.equal(4);",
-											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'drawResultId' must be provided and an int: undefined\");",
-											"    pm.expect(responseData.errors[1]).to.equal(\"Property 'country' must be provided and in the provided list: undefined\");",
-											"    pm.expect(responseData.errors[2]).to.equal(\"Property 'numbersMatched' must be provided: undefined\");",
-											"    pm.expect(responseData.errors[3]).to.equal(\"Property 'prizeFundAmount' must be provided: undefined\");",
-											"});",
-											"",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"id": "b6d14244-4b6d-40ed-bed3-67fe51e1393b",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -1954,7 +1950,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"country\": \"ie\",\n    \"numbersMatched\": \"0 + 0\",\n    \"countrySpecificWinners\": \"00\",\n    \"prizesPerWinner\": \"€000,000\",\n    \"totalWinners\": \"000\",\n    \"prizeFundAmount\": \"0000\"\n}",
+									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"country\": \"ie\",\n    \"numbersMatched\": \"0 + 0\",\n    \"countrySpecificWinners\": \"00\",\n    \"prizesPerWinner\": \"€000,000\",\n    \"totalWinners\": \"000\",\n    \"prizeFundAmount\": \"0000\",\n    \"prizeCurrency\": \"€\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
