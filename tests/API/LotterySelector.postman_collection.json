@@ -48,7 +48,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"country\": \"ie\",\n    \"numbersMatched\": \"0 + 0\",\n    \"countrySpecificWinners\": \"00\",\n    \"prizesPerWinner\": \"€000,000\",\n    \"totalWinners\": \"000\",\n    \"prizeFundAmount\": \"0000\"\n}",
+									"raw": "{\n    \"country\": \"ie\",\n    \"numbersMatched\": \"0 + 0\",\n    \"countrySpecificWinners\": \"00\",\n    \"prizesPerWinner\": \"€000,000\",\n    \"totalWinners\": \"000\",\n    \"prizeFundAmount\": \"0000\",\n    \"prizeCurrency\": \"€\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -104,7 +104,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"numbersMatched\": \"0 + 0\",\n    \"countrySpecificWinners\": \"00\",\n    \"prizesPerWinner\": \"€000,000\",\n    \"totalWinners\": \"000\",\n    \"prizeFundAmount\": \"0000\"\n}",
+									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"numbersMatched\": \"0 + 0\",\n    \"countrySpecificWinners\": \"00\",\n    \"prizesPerWinner\": \"€000,000\",\n    \"totalWinners\": \"000\",\n    \"prizeFundAmount\": \"0000\",\n    \"prizeCurrency\": \"€\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -160,7 +160,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"country\": \"ie\",\n    \"countrySpecificWinners\": \"00\",\n    \"prizesPerWinner\": \"€000,000\",\n    \"totalWinners\": \"000\",\n    \"prizeFundAmount\": \"0000\"\n}",
+									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"country\": \"ie\",\n    \"countrySpecificWinners\": \"00\",\n    \"prizesPerWinner\": \"€000,000\",\n    \"totalWinners\": \"000\",\n    \"prizeFundAmount\": \"0000\",\n    \"prizeCurrency\": \"€\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -216,7 +216,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"country\": \"ie\",\n    \"numbersMatched\": \"0 + 0\",\n    \"prizesPerWinner\": \"€000,000\",\n    \"totalWinners\": \"000\",\n    \"prizeFundAmount\": \"0000\"\n}",
+									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"country\": \"ie\",\n    \"numbersMatched\": \"0 + 0\",\n    \"prizesPerWinner\": \"€000,000\",\n    \"totalWinners\": \"000\",\n    \"prizeFundAmount\": \"0000\",\n    \"prizeCurrency\": \"€\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -272,7 +272,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"country\": \"ie\",\n    \"numbersMatched\": \"0 + 0\",\n    \"countrySpecificWinners\": \"00\",\n    \"totalWinners\": \"000\",\n    \"prizeFundAmount\": \"0000\"\n}",
+									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"country\": \"ie\",\n    \"numbersMatched\": \"0 + 0\",\n    \"countrySpecificWinners\": \"00\",\n    \"totalWinners\": \"000\",\n    \"prizeFundAmount\": \"0000\",\n    \"prizeCurrency\": \"€\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -328,7 +328,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"country\": \"ie\",\n    \"numbersMatched\": \"0 + 0\",\n    \"countrySpecificWinners\": \"00\",\n    \"prizesPerWinner\": \"€000,000\",\n    \"prizeFundAmount\": \"0000\"\n}",
+									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"country\": \"ie\",\n    \"numbersMatched\": \"0 + 0\",\n    \"countrySpecificWinners\": \"00\",\n    \"prizesPerWinner\": \"€000,000\",\n    \"prizeFundAmount\": \"0000\",\n    \"prizeCurrency\": \"€\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -384,7 +384,63 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"country\": \"ie\",\n    \"numbersMatched\": \"0 + 0\",\n    \"countrySpecificWinners\": \"00\",\n    \"prizesPerWinner\": \"€000,000\",\n    \"totalWinners\": \"000\"\n}",
+									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"country\": \"ie\",\n    \"numbersMatched\": \"0 + 0\",\n    \"countrySpecificWinners\": \"00\",\n    \"prizesPerWinner\": \"€000,000\",\n    \"totalWinners\": \"000\",\n    \"prizeCurrency\": \"€\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/insertNewCountryResult",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"insertNewCountryResult"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "InsertCountryResult- Missing prizeCurrency",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response status code is 400\", function () {",
+											"    pm.response.to.have.status(400);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the error field\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors).to.exist;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Response has the required error message\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'prizeCurrency' must be provided: undefined\");",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"country\": \"ie\",\n    \"numbersMatched\": \"0 + 0\",\n    \"countrySpecificWinners\": \"00\",\n    \"prizesPerWinner\": \"€000,000\",\n    \"totalWinners\": \"000\",\n    \"prizeFundAmount\": \"0000\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -444,7 +500,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"countrySpecificWinners\": \"00\",\n    \"prizesPerWinner\": \"€000,000\",\n    \"totalWinners\": \"000\"\n}",
+									"raw": "{\n    \"countrySpecificWinners\": \"00\",\n    \"prizesPerWinner\": \"€000,000\",\n    \"totalWinners\": \"000\",\n    \"prizeCurrency\": \"€\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2024,7 +2080,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"country\": \"ie\",\n    \"numbersMatched\": \"0 + 0\",\n    \"countrySpecificWinners\": \"00\",\n    \"prizesPerWinner\": \"€000,000\",\n    \"totalWinners\": \"000\",\n    \"prizeFundAmount\": \"0000\"\n}",
+									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"country\": \"ie\",\n    \"numbersMatched\": \"0 + 0\",\n    \"countrySpecificWinners\": \"00\",\n    \"prizesPerWinner\": \"€000,000\",\n    \"totalWinners\": \"000\",\n    \"prizeFundAmount\": \"0000\",\n    \"prizeCurrency\": \"€\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2354,7 +2410,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"country\": \"ie\",\n    \"numbersMatched\": \"0 + 0\",\n    \"countrySpecificWinners\": \"00\",\n    \"prizesPerWinner\": \"€000,000\",\n    \"totalWinners\": \"000\",\n    \"prizeFundAmount\": \"0000\"\n}",
+							"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"country\": \"ie\",\n    \"numbersMatched\": \"0 + 0\",\n    \"countrySpecificWinners\": \"00\",\n    \"prizesPerWinner\": \"€000,000\",\n    \"totalWinners\": \"000\",\n    \"prizeFundAmount\": \"0000\",\n    \"prizeCurrency\": \"€\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
