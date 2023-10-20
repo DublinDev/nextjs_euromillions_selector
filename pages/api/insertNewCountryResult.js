@@ -33,8 +33,8 @@ export default async (req, res) => {
         errors.push(`Property 'countrySpecificWinners' must be provided: ${req.body.countrySpecificWinners}`);
     }
     //ToDo: Verify checks are in place
-    if (!req.body.prizesPerWinner) {
-        errors.push(`Property 'prizesPerWinner' must be provided: ${req.body.prizesPerWinner}`);
+    if (!req.body.prizeAmountPerWinner) {
+        errors.push(`Property 'prizeAmountPerWinner' must be provided: ${req.body.prizeAmountPerWinner}`);
     }
     if (!req.body.totalWinners /*|| isNaN(totalWinners)*/) {
         errors.push(`Property 'totalWinners' must be provided: ${req.body.totalWinners}`);
