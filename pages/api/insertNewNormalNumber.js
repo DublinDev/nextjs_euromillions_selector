@@ -4,9 +4,9 @@ export default async (req, res) => {
     // List of errors
     const errors = [];
 
-    // Check drawResultId
-    if (!req.body.drawResultId || isNaN(req.body.drawResultId)) {
-        errors.push(`Property 'drawResultId' must be provided and an int: ${req.body.drawResultId}`);
+    // Check drawId
+    if (!req.body.drawId || isNaN(req.body.drawId)) {
+        errors.push(`Property 'drawId' must be provided and an int: ${req.body.drawId}`);
     }
 
     // Check number
@@ -20,8 +20,8 @@ export default async (req, res) => {
     }
 
     // Construct the query and values for the insert operation
-    const valuesArr = [req.body.drawResultId, req.body.number];
-    const insertQuery = `INSERT INTO NormalNumber(drawResultId, number) VALUES(?,?)`;
+    const valuesArr = [req.body.drawId, req.body.number];
+    const insertQuery = `INSERT INTO NormalNumber(drawId, number) VALUES(?,?)`;
 
     if (req.method === 'POST') {
         try {

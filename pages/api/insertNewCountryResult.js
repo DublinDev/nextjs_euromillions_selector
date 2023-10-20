@@ -4,7 +4,7 @@ import { COUNTRY_CODES } from '../../utils/constants';
 export default async (req, res) => {
 
     const expectedValues = [
-        "drawResultId",
+        "drawId",
         "country",
         "numbersMatched",
         "countrySpecificWinners",
@@ -20,8 +20,8 @@ export default async (req, res) => {
         return res.status(405).end(); // Method Not Allowed
     }
 
-    if (!req.body.drawResultId || isNaN(req.body.drawResultId)) {
-        errors.push(`Property 'drawResultId' must be provided and an int: ${req.body.drawResultId}`);
+    if (!req.body.drawId || isNaN(req.body.drawId)) {
+        errors.push(`Property 'drawId' must be provided and an int: ${req.body.drawId}`);
     }
     if (!req.body.country || !COUNTRY_CODES.includes(req.body.country)) {
         errors.push(`Property 'country' must be provided and in the provided list: ${req.body.country}`);
@@ -52,7 +52,7 @@ export default async (req, res) => {
     }
 
     const valuesArr = expectedValues.map(key => req.body[key]);
-    const insertQuery = `INSERT INTO CountryResult(drawResultId, country, numbersMatched, countrySpecificWinners, prizesPerWinner, totalWinners, prizeFundAmount, prizeCurrency)
+    const insertQuery = `INSERT INTO CountryResult(drawId, country, numbersMatched, countrySpecificWinners, prizesPerWinner, totalWinners, prizeFundAmount, prizeCurrency)
     VALUES(?,?,?,?,?,?,?,?)`;
 
     try {
