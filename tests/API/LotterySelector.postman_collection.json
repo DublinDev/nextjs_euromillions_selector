@@ -56,13 +56,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/insertNewCountryResult",
+									"raw": "{{url}}/api/addPrizeDetails",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"insertNewCountryResult"
+										"addPrizeDetails"
 									]
 								}
 							},
@@ -112,13 +112,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/insertNewCountryResult",
+									"raw": "{{url}}/api/addPrizeDetails",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"insertNewCountryResult"
+										"addPrizeDetails"
 									]
 								}
 							},
@@ -168,13 +168,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/insertNewCountryResult",
+									"raw": "{{url}}/api/addPrizeDetails",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"insertNewCountryResult"
+										"addPrizeDetails"
 									]
 								}
 							},
@@ -224,13 +224,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/insertNewCountryResult",
+									"raw": "{{url}}/api/addPrizeDetails",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"insertNewCountryResult"
+										"addPrizeDetails"
 									]
 								}
 							},
@@ -280,13 +280,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/insertNewCountryResult",
+									"raw": "{{url}}/api/addPrizeDetails",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"insertNewCountryResult"
+										"addPrizeDetails"
 									]
 								}
 							},
@@ -336,13 +336,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/insertNewCountryResult",
+									"raw": "{{url}}/api/addPrizeDetails",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"insertNewCountryResult"
+										"addPrizeDetails"
 									]
 								}
 							},
@@ -392,13 +392,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/insertNewCountryResult",
+									"raw": "{{url}}/api/addPrizeDetails",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"insertNewCountryResult"
+										"addPrizeDetails"
 									]
 								}
 							},
@@ -448,13 +448,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/insertNewCountryResult",
+									"raw": "{{url}}/api/addPrizeDetails",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"insertNewCountryResult"
+										"addPrizeDetails"
 									]
 								}
 							},
@@ -508,13 +508,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/insertNewCountryResult",
+									"raw": "{{url}}/api/addPrizeDetails",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"insertNewCountryResult"
+										"addPrizeDetails"
 									]
 								}
 							},
@@ -569,13 +569,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/insertNewDrawResult",
+									"raw": "{{url}}/api/addDrawDetails",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"insertNewDrawResult"
+										"addDrawDetails"
 									]
 								}
 							},
@@ -625,13 +625,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/insertNewDrawResult",
+									"raw": "{{url}}/api/addDrawDetails",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"insertNewDrawResult"
+										"addDrawDetails"
 									]
 								}
 							},
@@ -681,13 +681,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/insertNewDrawResult",
+									"raw": "{{url}}/api/addDrawDetails",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"insertNewDrawResult"
+										"addDrawDetails"
 									]
 								}
 							},
@@ -737,13 +737,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/insertNewDrawResult",
+									"raw": "{{url}}/api/addDrawDetails",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"insertNewDrawResult"
+										"addDrawDetails"
 									]
 								}
 							},
@@ -793,13 +793,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/insertNewDrawResult",
+									"raw": "{{url}}/api/addDrawDetails",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"insertNewDrawResult"
+										"addDrawDetails"
 									]
 								}
 							},
@@ -849,13 +849,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/insertNewDrawResult",
+									"raw": "{{url}}/api/addDrawDetails",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"insertNewDrawResult"
+										"addDrawDetails"
 									]
 								}
 							},
@@ -905,13 +905,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/insertNewDrawResult",
+									"raw": "{{url}}/api/addDrawDetails",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"insertNewDrawResult"
+										"addDrawDetails"
 									]
 								}
 							},
@@ -961,13 +961,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/insertNewDrawResult",
+									"raw": "{{url}}/api/addDrawDetails",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"insertNewDrawResult"
+										"addDrawDetails"
 									]
 								}
 							},
@@ -1017,13 +1017,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/insertNewDrawResult",
+									"raw": "{{url}}/api/addDrawDetails",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"insertNewDrawResult"
+										"addDrawDetails"
 									]
 								}
 							},
@@ -1090,13 +1090,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/insertNewDrawResult",
+									"raw": "{{url}}/api/addDrawDetails",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"insertNewDrawResult"
+										"addDrawDetails"
 									]
 								}
 							},
@@ -1148,13 +1148,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/insertNewDrawResult",
+									"raw": "{{url}}/api/addDrawDetails",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"insertNewDrawResult"
+										"addDrawDetails"
 									]
 								}
 							},
@@ -1210,13 +1210,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/insertNewNormalNumber",
+									"raw": "{{url}}/api/addNormalNumber",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"insertNewNormalNumber"
+										"addNormalNumber"
 									]
 								}
 							},
@@ -1266,13 +1266,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/insertNewNormalNumber",
+									"raw": "{{url}}/api/addNormalNumber",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"insertNewNormalNumber"
+										"addNormalNumber"
 									]
 								}
 							},
@@ -1322,13 +1322,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/insertNewNormalNumber",
+									"raw": "{{url}}/api/addNormalNumber",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"insertNewNormalNumber"
+										"addNormalNumber"
 									]
 								}
 							},
@@ -1378,13 +1378,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/insertNewNormalNumber",
+									"raw": "{{url}}/api/addNormalNumber",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"insertNewNormalNumber"
+										"addNormalNumber"
 									]
 								}
 							},
@@ -1439,13 +1439,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/insertNewBonusNumber",
+									"raw": "{{url}}/api/addBonusNumber",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"insertNewBonusNumber"
+										"addBonusNumber"
 									]
 								}
 							},
@@ -1495,13 +1495,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/insertNewBonusNumber",
+									"raw": "{{url}}/api/addBonusNumber",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"insertNewBonusNumber"
+										"addBonusNumber"
 									]
 								}
 							},
@@ -1551,13 +1551,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/insertNewBonusNumber",
+									"raw": "{{url}}/api/addBonusNumber",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"insertNewBonusNumber"
+										"addBonusNumber"
 									]
 								}
 							},
@@ -1607,13 +1607,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/insertNewBonusNumber",
+									"raw": "{{url}}/api/addBonusNumber",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"insertNewBonusNumber"
+										"addBonusNumber"
 									]
 								}
 							},
@@ -1895,13 +1895,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/insertNewDrawResult",
+									"raw": "{{url}}/api/addDrawDetails",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"insertNewDrawResult"
+										"addDrawDetails"
 									]
 								}
 							},
@@ -1959,13 +1959,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/insertNewNormalNumber",
+									"raw": "{{url}}/api/addNormalNumber",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"insertNewNormalNumber"
+										"addNormalNumber"
 									]
 								}
 							},
@@ -2027,13 +2027,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/insertNewBonusNumber",
+									"raw": "{{url}}/api/addBonusNumber",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"insertNewBonusNumber"
+										"addBonusNumber"
 									]
 								}
 							},
@@ -2088,13 +2088,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{url}}/api/insertNewCountryResult",
+									"raw": "{{url}}/api/addPrizeDetails",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"api",
-										"insertNewCountryResult"
+										"addPrizeDetails"
 									]
 								}
 							},
@@ -2225,13 +2225,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/insertNewDrawResult",
+							"raw": "{{url}}/api/addDrawDetails",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"insertNewDrawResult"
+								"addDrawDetails"
 							]
 						}
 					},
@@ -2289,13 +2289,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/insertNewNormalNumber",
+							"raw": "{{url}}/api/addNormalNumber",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"insertNewNormalNumber"
+								"addNormalNumber"
 							]
 						}
 					},
@@ -2357,13 +2357,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/insertNewBonusNumber",
+							"raw": "{{url}}/api/addBonusNumber",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"insertNewBonusNumber"
+								"addBonusNumber"
 							]
 						}
 					},
@@ -2418,13 +2418,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/insertNewCountryResult",
+							"raw": "{{url}}/api/addPrizeDetails",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
-								"insertNewCountryResult"
+								"addPrizeDetails"
 							]
 						}
 					},
