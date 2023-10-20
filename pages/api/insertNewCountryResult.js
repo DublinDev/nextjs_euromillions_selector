@@ -5,13 +5,13 @@ export default async (req, res) => {
 
     const expectedValues = [
         "drawId",
-        "country",
         "numbersMatched",
-        "countrySpecificWinners",
-        "prizesPerWinner",
         "totalWinners",
+        "country",
+        "countrySpecificWinners",
+        "prizeCurrency",
+        "prizeAmountPerWinner",
         "prizeFundAmount",
-        "prizeCurrency"
     ]
     let errors = [];
 
@@ -52,7 +52,7 @@ export default async (req, res) => {
     }
 
     const valuesArr = expectedValues.map(key => req.body[key]);
-    const insertQuery = `INSERT INTO CountryResult(drawId, country, numbersMatched, countrySpecificWinners, prizesPerWinner, totalWinners, prizeFundAmount, prizeCurrency)
+    const insertQuery = `INSERT INTO PrizeDetails(drawId, numbersMatched, totalWinners, country, countrySpecificWinners, prizeCurrency, prizeAmountPerWinner, prizeFundAmount)
     VALUES(?,?,?,?,?,?,?,?)`;
 
     try {
