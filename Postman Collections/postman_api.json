@@ -34,7 +34,7 @@
 											"pm.test(\"Response has the required error message\", function () {",
 											"    const responseData = pm.response.json();",
 											"    ",
-											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'drawResultId' must be provided and an int: undefined\");",
+											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'drawId' must be provided and an int: undefined\");",
 											"});",
 											"",
 											""
@@ -451,7 +451,7 @@
 											"    const responseData = pm.response.json();",
 											"    ",
 											"    pm.expect(responseData.errors.length).to.equal(4);",
-											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'drawResultId' must be provided and an int: undefined\");",
+											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'drawId' must be provided and an int: undefined\");",
 											"    pm.expect(responseData.errors[1]).to.equal(\"Property 'country' must be provided and in the provided list: undefined\");",
 											"    pm.expect(responseData.errors[2]).to.equal(\"Property 'numbersMatched' must be provided: undefined\");",
 											"    pm.expect(responseData.errors[3]).to.equal(\"Property 'prizeFundAmount' must be provided: undefined\");",
@@ -1110,7 +1110,7 @@
 											"pm.test(\"Response has the required error message\", function () {",
 											"    const responseData = pm.response.json();",
 											"    ",
-											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'drawResultId' must be provided and an int: undefined\");",
+											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'drawId' must be provided and an int: undefined\");",
 											"});",
 											"",
 											""
@@ -1180,7 +1180,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"drawResultId\": {{test_draw_id}}\n}",
+									"raw": "{\n    \"drawId\": {{test_draw_id}}\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1232,7 +1232,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"number\": \"59\"\n}",
+									"raw": "{\n    \"drawId\": {{test_draw_id}},\n    \"number\": \"59\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1284,7 +1284,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"number\": \"0\"\n}",
+									"raw": "{\n    \"drawId\": {{test_draw_id}},\n    \"number\": \"0\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1324,7 +1324,7 @@
 											"pm.test(\"Response has the required error message\", function () {",
 											"    const responseData = pm.response.json();",
 											"    ",
-											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'drawResultId' must be provided and an int: undefined\");",
+											"    pm.expect(responseData.errors[0]).to.equal(\"Property 'drawId' must be provided and an int: undefined\");",
 											"});",
 											"",
 											""
@@ -1394,7 +1394,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"drawResultId\": {{test_draw_id}}\n}",
+									"raw": "{\n    \"drawId\": {{test_draw_id}}\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1446,7 +1446,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"number\": \"45\"\n}",
+									"raw": "{\n    \"drawId\": {{test_draw_id}},\n    \"number\": \"45\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1498,7 +1498,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"number\": \"0\"\n}",
+									"raw": "{\n    \"drawId\": {{test_draw_id}},\n    \"number\": \"0\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1829,7 +1829,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"number\": \"5\"\n}",
+									"raw": "{\n    \"drawId\": {{test_draw_id}},\n    \"number\": \"5\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1893,7 +1893,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"number\": \"5\"\n}",
+									"raw": "{\n    \"drawId\": {{test_draw_id}},\n    \"number\": \"5\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1950,7 +1950,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"country\": \"ie\",\n    \"numbersMatched\": \"0 + 0\",\n    \"countrySpecificWinners\": \"00\",\n    \"prizesPerWinner\": \"€000,000\",\n    \"totalWinners\": \"000\",\n    \"prizeFundAmount\": \"0000\",\n    \"prizeCurrency\": \"€\"\n}",
+									"raw": "{\n    \"drawId\": {{test_draw_id}},\n    \"country\": \"ie\",\n    \"numbersMatched\": \"0 + 0\",\n    \"countrySpecificWinners\": \"00\",\n    \"prizesPerWinner\": \"€000,000\",\n    \"totalWinners\": \"000\",\n    \"prizeFundAmount\": \"0000\",\n    \"prizeCurrency\": \"€\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2140,7 +2140,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"number\": \"5\"\n}",
+							"raw": "{\n    \"drawId\": {{test_draw_id}},\n    \"number\": \"5\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2204,7 +2204,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"number\": \"5\"\n}",
+							"raw": "{\n    \"drawId\": {{test_draw_id}},\n    \"number\": \"5\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2261,7 +2261,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"drawResultId\": {{test_draw_id}},\n    \"country\": \"ie\",\n    \"numbersMatched\": \"0 + 0\",\n    \"countrySpecificWinners\": \"00\",\n    \"prizesPerWinner\": \"€000,000\",\n    \"totalWinners\": \"000\",\n    \"prizeFundAmount\": \"0000\",\n    \"prizeCurrency\": \"€\"\n}",
+							"raw": "{\n    \"drawId\": {{test_draw_id}},\n    \"country\": \"ie\",\n    \"numbersMatched\": \"0 + 0\",\n    \"countrySpecificWinners\": \"00\",\n    \"prizesPerWinner\": \"€000,000\",\n    \"totalWinners\": \"000\",\n    \"prizeFundAmount\": \"0000\",\n    \"prizeCurrency\": \"€\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
