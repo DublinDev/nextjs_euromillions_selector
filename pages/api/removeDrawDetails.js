@@ -15,10 +15,10 @@ export default async function deleteDraw(req, res) {
 
     // List of tables to delete the records from
     const quieries = [
-        'DELETE FROM NewDrawResult WHERE id = ?',
-        'DELETE FROM CountryResult WHERE drawId = ?',
-        'DELETE FROM NormalNumber WHERE drawId = ?',
-        'DELETE FROM BonusNumber WHERE drawId = ?',
+        'DELETE FROM DrawDetails WHERE id = ?',
+        'DELETE FROM PrizeDetails WHERE drawId = ?',
+        'DELETE FROM NormalNumbers WHERE drawId = ?',
+        'DELETE FROM BonusNumbers WHERE drawId = ?',
     ];
 
     try {

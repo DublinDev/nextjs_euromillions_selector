@@ -21,7 +21,7 @@ export default async (req, res) => {
     }
 
     const valuesArr = [req.body.drawId, req.body.number];
-    const insertQuery = `INSERT INTO BonusNumber(drawId, number) VALUES(?,?)`;
+    const insertQuery = `INSERT INTO BonusNumbers(drawId, number) VALUES(?,?)`;
 
     try {
         // Use the promise-based insert function

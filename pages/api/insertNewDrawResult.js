@@ -62,7 +62,7 @@ export default async (req, res) => {
         return req.body[key];
     });
 
-    const insertQuery = `INSERT INTO NewDrawResult(lotteryType,date,drawNumber,jackpot,ballMachine,ballSet,totalWinners,totalTicketsSold,outcome)
+    const insertQuery = `INSERT INTO DrawDetails(lotteryType,date,drawNumber,jackpot,ballMachine,ballSet,totalWinners,totalTicketsSold,outcome)
     VALUES(?,?,?,?,?,?,?,?,?)`;
 
     try {

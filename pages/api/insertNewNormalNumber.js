@@ -21,7 +21,7 @@ export default async (req, res) => {
 
     // Construct the query and values for the insert operation
     const valuesArr = [req.body.drawId, req.body.number];
-    const insertQuery = `INSERT INTO NormalNumber(drawId, number) VALUES(?,?)`;
+    const insertQuery = `INSERT INTO NormalNumbers(drawId, number) VALUES(?,?)`;
 
     if (req.method === 'POST') {
         try {
