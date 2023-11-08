@@ -5,15 +5,18 @@
     "dev": "next dev",
     "start": "next start",
     "test:e2e": "playwright test",
-    "test:api": "newman run tests/API/LotterySelector.postman_collection.json -e tests/API/LotteryProject-dev.postman_environment.json --folder Tests"
+    "test:api": "newman run tests/API/LotterySelector.postman_collection.json -e tests/API/LotteryProject-dev.postman_environment.json --folder Tests",
+    "postinstall": "bash utils/scripts/typeormPatch.sh"
   },
   "dependencies": {
+    "langchain": "^0.0.172",
     "next": "latest",
     "openai": "^4.7.1",
     "playwright": "^1.39.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "sqlite3": "^5.1.6"
+    "sqlite3": "^5.1.6",
+    "typeorm": "^0.3.17"
   },
   "engines": {
     "node": ">=18"
