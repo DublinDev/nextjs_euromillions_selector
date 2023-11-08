@@ -3,8 +3,8 @@ import InputSection from './InputSection';
 import EmptySlots from './EmptySlots';
 import NumberGrid from './NumberGrid';
 import fillNewArray from '../utils/utils';
+// import { runLangchain } from '../utils/langchain.js'
 
-fillNewArray
 const HomePage = () => {
   const [selectedNumbers, setSelectedNumbers] = useState(fillNewArray(5, null));
   const [luckyStars, setLuckyStars] = useState(fillNewArray(2, null));
@@ -13,6 +13,7 @@ const HomePage = () => {
   const [inputValue, setInputValue] = useState('');
   const [sqlString, setSqlString] = useState('');
   const [queryResult, setQueryResult] = useState({});
+  const [outcome, setOutcome] = useState('');
   const [statusOfprocessing, setStatusOfProcessing] = useState([]);
 
   // Select a number from the Grid
@@ -52,46 +53,78 @@ const HomePage = () => {
 
 
   const checkForEnter = async (event) => {
+    let status = [];
+
     if (event.key === "Enter") {
-      await processPrompt();
+      // await processPrompt();
+      status.push(inputValue);
+      setStatusOfProcessing(status);
+      const res = await processPrompt_langchain(inputValue);
+      console.log(res);
+      status.push(res.result.output);
+      setOutcome(status);
     }
+  }
+
+  const processPrompt_langchain = async (query) => {
+    const response = await fetch('/api/queryLangchain', {
+      method: 'POST',
+      body: JSON.stringify({ query }),
+      headers: { 'Content-Type': 'application/json' }
+    });
+
+    const data = await response.json();
+
+    return data;
   }
 
   // Main function to tranlaste user prompt into usable data
   const processPrompt = async () => {
-    if (event.key === "Enter") {
-      setHighlightedNumber([null, null, null, null, null]);
-      setLuckyStars([null, null]);
-      let status = [];
+    setHighlightedNumber([null, null, null, null, null]);
+    setLuckyStars([null, null]);
+    setQueryResult({});
 
-      status.push('Processing prompt');
-      status.push('Generating SQL from prompt');
-      setStatusOfProcessing(status);
-      console.log(status);
-      const resultObj = await getSQLFromPrompt(inputValue);
-      status[status.length - 1] = 'SQL Generated';
-      status.push('Executing SQL');
-      setStatusOfProcessing(status);
-      console.log(status);
-      const res = await runQueryOnDB(resultObj.sqlQuery);
-      status[status.length - 1] = 'SQL Executed';
-      status.push('Attempting to format results of SQL query');
-      setStatusOfProcessing(status);
-      console.log(status);
+    let status = [];
 
-      let formatted = await formatFinalResult(resultObj, res);
-      status[status.length - 1] = 'Results have been reformatted';
-      status.push('Highlighting number');
-      setStatusOfProcessing(status);
-      console.log(status);
-      highlightNumbers(formatted.suggestedNumbers);
+    status.push('Processing prompt');
+    status.push('Generating SQL from prompt');
+    setStatusOfProcessing(status);
+    console.log(status);
 
-      status[status.length - 1] = 'Numbers have been highlighted';
-      status.push('Done');
-      setStatusOfProcessing(status);
-      console.log(status);
+    // Convert the user prompt to a SQL query for the db
+    const resultObj = await getSQLFromPrompt(inputValue);
+    status.push('SQL Generated');
+    status.push('Executing SQL');
+    setStatusOfProcessing(status);
+    console.log(status);
 
-    }
+    // Run the query on the db
+    const res = await runQueryOnDB(resultObj.sqlQuery);
+    status.push('SQL Executed');
+    status.push('Attempting to format results of SQL query');
+    setStatusOfProcessing(status);
+    console.log(status);
+
+    // Reformat the final result to facitate numberhighlighting
+    let formatted = await formatFinalResult(resultObj, res);
+    status.push('Results have been reformatted');
+    status.push('Highlighting number');
+    setStatusOfProcessing(status);
+    console.log(status);
+
+    // Highlight the numbers 
+    highlightNumbers(formatted.suggestedNumbers);
+    status.push('Numbers have been highlighted');
+    status.push('Done');
+    setStatusOfProcessing(status);
+    console.log(status);
+
+    setQueryResult({
+      originalPrompt: resultObj.query,
+      sql: resultObj.sqlQuery,
+      sqlQueryResult: res,
+      // formattedQueryResult: formatted
+    });
   };
 
   // Set the highlighted numbers
@@ -100,7 +133,6 @@ const HomePage = () => {
     setHighlightedLuckyStar(suggestedNumbers['bonusNumbers']);
   }
 
-  // 
   const formatFinalResult = async (orinalQueries, sqlResult) => {
     const response = await fetch('/api/reformatResults', {
       method: 'POST',
@@ -131,7 +163,7 @@ const HomePage = () => {
   }
 
   const getSQLFromPrompt = async (query) => {
-    const response = await fetch('/api/hello', {
+    const response = await fetch('/api/queryChatGPT', {
       method: 'POST',
       body: JSON.stringify({ query }),
       headers: { 'Content-Type': 'application/json' }
@@ -155,7 +187,7 @@ const HomePage = () => {
   return (
     <div className="App">
       <div className="main-container">
-        <InputSection inputValue={inputValue} onKeyDown={checkForEnter} onChange={updateInput} status={statusOfprocessing} />
+        <InputSection inputValue={inputValue} onKeyDown={checkForEnter} onChange={updateInput} status={statusOfprocessing} outcome={outcome} />
         <div className="numbers-section">
           <div className="empty-slots-container">
             <div data-testid="normal-numbers-selected">

@@ -17,21 +17,22 @@ import React from 'react';
 const InputSection = ({ inputValue, onKeyDown, onChange, status, outcome }) => {
 
     status = !status ? [] : status;
-    const printOutcome = (outcome) => {
-        if (Object.keys(outcome).length > 0) {
-            return (
-                <div>
-                    <p>
-                        <span key="1" className="outcome-title">OriginalQuery</span>{outcome.sql}<br />
-                        <span key="2" className="outcome-title">SQL</span>{outcome.sql}<br />
-                        <span key="3" className="outcome-title">RawSQLResponse</span>{outcome.sqlQueryResult}<br />
-                        {/* <span className="outcome-title">Formatted</span>{outcome.formattedQueryResult}<br/> */}
-                    </p>
-                </div>
-            )
-        };
-        return <></>;
-    };
+    console.log(`status: ${status}`);
+    // const printOutcome = (outcome) => {
+    //     if (Object.keys(outcome).length > 0) {
+    //         return (
+    //             <div>
+    //                 <p>
+    //                     <span key="1" className="outcome-title">OriginalQuery</span>{outcome.sql}<br />
+    //                     <span key="2" className="outcome-title">SQL</span>{outcome.sql}<br />
+    //                     <span key="3" className="outcome-title">RawSQLResponse</span>{outcome.sqlQueryResult}<br />
+    //                     {/* <span className="outcome-title">Formatted</span>{outcome.formattedQueryResult}<br/> */}
+    //                 </p>
+    //             </div>
+    //         )
+    //     };
+    //     return <></>;
+    // };
 
     return (
         <div className="inputSection">
@@ -48,9 +49,10 @@ const InputSection = ({ inputValue, onKeyDown, onChange, status, outcome }) => {
                 {status.map((statement, index) => (
                     <li key={index} className="progress-tracker">{statement}</li>
                 ))}
+                {outcome !== '' || <li>{outcome}</li>}
             </ul>
 
-            {/* <p>{JSON.stringify(outcome, null, 2)}</p> */}
+            {/* <p>{outcomeJSON.stringify(outcome, null, 2)}</p> */}
             {/* {printOutcome(outcome)} */}
         </div>
     );

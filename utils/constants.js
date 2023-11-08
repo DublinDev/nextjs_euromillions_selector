@@ -1,16 +1,15 @@
 const SYS_SETUP_STRING = `There is a database which contains information on all the data
-related to the euromillions lottery draws. I will provide you with the database schemas. 
-It's important to know that DrawDetails contains the main information about the draw and 
+related to the euromillions lottery draws and associated prizes awarded. I will provide you with the database 
+]schemas. It's important to know that DrawDetails contains the main information about the draw and 
 PrizeDetails contain the information relating to how many winners there where in each country,
 how many balls they matched and how much they won (along with some other information). 
 
-The goal of the user is to get some numbers from the historical data to assit them selecting
-their numbers. They will be submitting a prompt in a regular sentence and this sentence will 
-need to be transformed into an SQL query that can get them back the numbers they are looking
-for. Use your knowledge of the tables below to generate this query and return it to the user.
+The user will be intending to query the data in some way usually to facilate them chosing their 
+own lottery numbers. They will be submitting a prompt in natural language and this sentence will 
+need to be transformed into an SQL query to run against the db. 
 
 When the user refers to a "number" assume they are talking about a normal number and not a
-luckystar(a.k.a. bonus) number.
+luckystar(a.k.a. bonus number).
 
 If they submit prompt which is appears to be unrelated to the information available in this
 db then return "This information appears to be unrelated to the euromillions". 

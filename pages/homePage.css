@@ -1,4 +1,3 @@
-
 body {
     background-color: #eaf5ff;
     font-family: 'Roboto', sans-serif;
@@ -117,15 +116,27 @@ button.highlighted {
         flex-direction: column;
     }
 
-    .input-section, .numbers-section {
+    .input-section,
+    .numbers-section {
         width: 100%;
     }
 }
 
 button.selected {
-  background-color: orange;  /* Color for selected normal numbers */
+    background-color: orange;
+    /* Color for selected normal numbers */
 }
 
 button.selected-lucky {
-  background-color: gold;    /* Color for selected lucky stars */
+    background-color: gold;
+    /* Color for selected lucky stars */
+}
+
+.current-status {
+    font-weight: 5;
+    margin-bottom: 5px;
+}
+
+.progress-tracker {
+    font-size: 10px;
 }
