@@ -6,7 +6,8 @@
 .pnp.js
 
 # testing
-/coverage
+/tests/examples
+/lib/db/tmp_edits
 
 # next.js
 /.next/
