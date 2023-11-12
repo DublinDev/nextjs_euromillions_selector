@@ -140,3 +140,35 @@ button.selected-lucky {
 .progress-tracker {
     font-size: 10px;
 }
+
+.toggel-numbers-btn {
+    font-family: 'Arial', sans-serif;
+    /* Example: Replace with your chosen font */
+    padding: 5px 5px;
+    border: 2px solid #5c6bc0;
+    /* Example color */
+    border-radius: 25px;
+    /* This gives rounded corners */
+    background-color: #5c6bc0;
+    /* Example color */
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.toggel-numbers-btn:hover {
+    background-color: #3949ab;
+    /* Darker shade for hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Simple shadow effect on hover */
+}
+
+.printed-query {
+    font-weight: 800;
+}
+
+.printed-outcome {
+    font-weight: 800;
+    background-color: orange
+}

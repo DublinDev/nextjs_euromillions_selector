@@ -15,6 +15,8 @@ const HomePage = () => {
   const [queryResult, setQueryResult] = useState({});
   const [outcome, setOutcome] = useState('');
   const [statusOfprocessing, setStatusOfProcessing] = useState([]);
+  const [gridCollapsed, setGridCollapsed] = useState(true);
+  const [query, setQuery] = useState('');
 
   // Select a number from the Grid
   const selectNumber = (num) => {
@@ -51,18 +53,17 @@ const HomePage = () => {
     setLuckyStars(newLuckyStars.sort((a, b) => a - b));
   };
 
-
   const checkForEnter = async (event) => {
     let status = [];
 
     if (event.key === "Enter") {
       // await processPrompt();
       status.push(inputValue);
-      setStatusOfProcessing(status);
+      setQuery(inputValue);
       const res = await processPrompt_langchain(inputValue);
       console.log(res);
       status.push(res.result.output);
-      setOutcome(status);
+      setOutcome(res.result.output);
     }
   }
 
@@ -144,7 +145,6 @@ const HomePage = () => {
     return data;
   };
 
-
   const runQueryOnDB = async (sqlQuery) => {
 
     const disallowedSQLTerms = ["INSERT", "DELETE", "UPDATE", "ALTER", "DROP", "CREATE"];
@@ -187,25 +187,32 @@ const HomePage = () => {
   return (
     <div className="App">
       <div className="main-container">
-        <InputSection inputValue={inputValue} onKeyDown={checkForEnter} onChange={updateInput} status={statusOfprocessing} outcome={outcome} />
-        <div className="numbers-section">
-          <div className="empty-slots-container">
-            <div data-testid="normal-numbers-selected">
-              <EmptySlots selectedNumbers={selectedNumbers} onUnselect={unselectNumber} numberType="normal" />
-            </div>
-            <div data-testid='bonus-numbers-selected'>
-              <EmptySlots selectedNumbers={luckyStars} onUnselect={unselectLuckyStar} numberType="bonus" />
-            </div>
-          </div>
-          <div className="grids-container">
-            <div data-testid="normal-numbers" className="grid-section">
-              <NumberGrid maxNumber={50} onSelect={selectNumber} onUnselect={unselectNumber} selectedNumbers={selectedNumbers} highlightedNumbers={highlightedNumbers} />
-            </div>
-            <div data-testid="bonus-numbers" className="grid-section">
-              <NumberGrid maxNumber={12} onSelect={selectLuckyStar} onUnselect={unselectLuckyStar} selectedNumbers={luckyStars} highlightedNumbers={highlightedLuckyStar} />
-            </div>
-          </div>
+        <InputSection inputValue={inputValue} onKeyDown={checkForEnter} onChange={updateInput} status={statusOfprocessing} outcome={outcome} query={query} />
+        <div className="toggel-numbers-btn" onClick={() => setGridCollapsed(!gridCollapsed)}>
+          {gridCollapsed ? "Show Grid" : "Hide Grid"}
         </div>
+        {!gridCollapsed && (
+          <div className="numbers-section">
+            <div className="empty-slots-container">
+              <div data-testid="normal-numbers-selected">
+                <EmptySlots selectedNumbers={selectedNumbers} onUnselect={unselectNumber} numberType="normal" />
+              </div>
+              <div data-testid='bonus-numbers-selected'>
+                <EmptySlots selectedNumbers={luckyStars} onUnselect={unselectLuckyStar} numberType="bonus" />
+              </div>
+            </div>
+
+            <div className="grids-container">
+              <div data-testid="normal-numbers" className="grid-section">
+                <NumberGrid maxNumber={50} onSelect={selectNumber} onUnselect={unselectNumber} selectedNumbers={selectedNumbers} highlightedNumbers={highlightedNumbers} />
+              </div>
+              <div data-testid="bonus-numbers" className="grid-section">
+                <NumberGrid maxNumber={12} onSelect={selectLuckyStar} onUnselect={unselectLuckyStar} selectedNumbers={luckyStars} highlightedNumbers={highlightedLuckyStar} />
+              </div>
+            </div>
+
+          </div>
+        )}
       </div>
     </div>
   );
