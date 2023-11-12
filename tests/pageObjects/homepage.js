@@ -1,5 +1,3 @@
-const { chromium } = require('playwright');
-const { test, expect } = require('@playwright/test');
 
 export class HomePO {
     constructor(page) {
@@ -14,7 +12,7 @@ export class HomePO {
         this.selectedNumbersBonus = page.getByTestId('bonus-numbers-selected');
 
         // this.searchField  = page.get
-
+        this.gridBtn = page.locator('.toggel-numbers-btn');
     }
 
     // Navigate to the homepage

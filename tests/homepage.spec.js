@@ -1,17 +1,17 @@
 // @ts-check
-const { test, expect } = require('@playwright/test');
+import { test, expect } from '@playwright/test';
 import { HomePO } from './pageObjects/homepage';
 
-
-test.describe('hjkfsdkjhfg', async () => {
+test.describe('Tests for the number selector', async () => {
   let homePage;
 
   test.beforeEach(async ({ page }) => {
     homePage = new HomePO(page);
     await homePage.navigate();
+    await homePage.gridBtn.click();
   });
 
-  test('Select 5 numbers', async ({ page }) => {
+  test('Select 5 numbers', async () => {
     await homePage.clickNormalNumber('7');
     await homePage.clickNormalNumber('17');
     await homePage.clickNormalNumber('27');
@@ -22,13 +22,13 @@ test.describe('hjkfsdkjhfg', async () => {
     await expect(values).toHaveText(['7', '17', '27', '37', '47'].join(''));
   });
 
-  test('Select lucky star', async ({ page }) => {
+  test('Select lucky star', async () => {
     await homePage.clickBonusNumber('5');
     const values = await homePage.selectedNumbersBonus;
     await expect(values).toHaveText(['-', '5'].join(''));
   });
 
-  test('Numbers selected are displayed in order', async ({ page }) => {
+  test('Numbers selected are displayed in order', async () => {
     await homePage.clickNormalNumber('7');
     await homePage.clickNormalNumber('37');
     await homePage.clickNormalNumber('47');
@@ -44,7 +44,7 @@ test.describe('hjkfsdkjhfg', async () => {
     await expect(values).toHaveText(['7', '17', '27', '37', '47'].join(''));
   });
 
-  test('Selected numbers show with the correct colors', async ({ page }) => {
+  test('Selected numbers show with the correct colors', async () => {
     const normalNumberBtn = homePage.getNormalNumber('7');
     await normalNumberBtn.click();
 
@@ -57,7 +57,7 @@ test.describe('hjkfsdkjhfg', async () => {
     await expect(bonusNumberBtn).toHaveCSS('background-color', 'rgb(255, 215, 0)');
   });
 
-  test('Numbers can be deselected by clicking the number is the top row', async ({ page }) => {
+  test('Numbers can be deselected by clicking the number is the top row', async () => {
     await homePage.clickNormalNumber('7');
 
     const normalSlot5 = homePage.getSelectedNumberSlots('5');
@@ -76,7 +76,7 @@ test.describe('hjkfsdkjhfg', async () => {
     await expect(bonusSlot2).toHaveText('-');
   });
 
-  test('Numbers of both types can be deselected by clicking them in the grid', async ({ page }) => {
+  test('Numbers of both types can be deselected by clicking them in the grid', async () => {
     const normalBtn7 = await homePage.getNormalNumber('7');
     await normalBtn7.click();
 
@@ -97,7 +97,7 @@ test.describe('hjkfsdkjhfg', async () => {
     await expect(bonusSlot2).toHaveText('-');
   });
 
-  test('Selected numbers are in correct order after number deselected', async ({ page }) => {
+  test('Selected numbers are in correct order after number deselected', async () => {
 
     await homePage.clickNormalNumber('5');
     await homePage.clickNormalNumber('15');
@@ -116,11 +116,11 @@ test.describe('hjkfsdkjhfg', async () => {
     await expect(normalSlot4).toHaveText('5');
     await expect(normalSlot3).toHaveText('-');
   });
-  test.skip('Only 5 normal numbers can be selected', async ({ page }) => { });
-  test.skip('Only 2 lucky stars can be selected', async ({ page }) => { });
-  test.skip('Suggested numbers show with a blue outline', async ({ page }) => { });
-  test.skip('Expected numbers are received for the prompt 13 Sep 2023', async ({ page }) => {
+  test.skip('Only 5 normal numbers can be selected', async () => { });
+  test.skip('Only 2 lucky stars can be selected', async () => { });
+  test.skip('Suggested numbers show with a blue outline', async () => { });
+  test.skip('Expected numbers are received for the prompt 13 Sep 2023', async () => {
     //const prompt = "What numbers were drawn on the 12th of September 2023";
   });
-  test.skip('Text can be entered in the input field', async ({ page }) => { });
+  test.skip('Text can be entered in the input field', async () => { });
 })
