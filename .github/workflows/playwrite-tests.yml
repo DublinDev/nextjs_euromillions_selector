@@ -4,6 +4,9 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+env:
+  USERNAME: ${{ secrets.UNAME }}
+  PASSWORD: ${{ secrets.PW }}
 jobs:
   test:
     timeout-minutes: 60
@@ -18,7 +21,7 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests
-      run: BASIC_AUTH_USERNAME=${{ secrets.UNAME }} BASIC_AUTH_PASSWORD=${{ secrets.PW }} npm run test:e2e
+      run: BASIC_AUTH_USERNAME=${{ env.USERNAME }} BASIC_AUTH_PASSWORD=${{ env.PASSWORD }} npm run test:e2e
     - uses: actions/upload-artifact@v3
       if: always()
       with:
