@@ -2261,7 +2261,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"drawId\": {{test_draw_id}},\n    \"country\": \"ie\",\n    \"numbersMatched\": \"0 + 0\",\n    \"countrySpecificWinners\": \"00\",\n    \"prizesPerWinner\": \"€000,000\",\n    \"totalWinners\": \"000\",\n    \"prizeFundAmount\": \"0000\",\n    \"prizeCurrency\": \"€\"\n}",
+							"raw": "{\n    \"drawId\": {{test_draw_id}},\n    \"country\": \"ie\",\n    \"numbersMatched\": \"0 + 0\",\n    \"countrySpecificWinners\": \"00\",\n    \"prizeAmountPerWinner\": \"€000,000\",\n    \"totalWinners\": \"000\",\n    \"prizeFundAmount\": \"0000\",\n    \"prizeCurrency\": \"€\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
