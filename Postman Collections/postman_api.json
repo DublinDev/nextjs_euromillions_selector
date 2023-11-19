@@ -2466,11 +2466,18 @@
 			"id": "ab7eeb06-d23e-4179-ac33-21fa7a2e68fb"
 		}
 	],
+	"auth": {
+		"type": "basic",
+		"basic": {
+			"password": "{{lottery_password}}",
+			"username": "{{lottery_username}}"
+		}
+	},
 	"event": [
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "d7e0fbc5-b113-437c-ae4e-f253212cbca5",
+				"id": "f77e2afb-12a0-4184-9f1e-a711d98668d6",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -2480,7 +2487,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "4687769e-649d-469f-8286-f1e4d8f907c1",
+				"id": "11cf3650-a910-434b-aef6-4a54d70abb52",
 				"type": "text/javascript",
 				"exec": [
 					""
