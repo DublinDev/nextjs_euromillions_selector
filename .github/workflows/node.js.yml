@@ -41,6 +41,6 @@ jobs:
 
     - name: Run api tests
       env: 
-        AUTH_USERANME: adminUser
-        AUTH_PW: howToYellow_W22riteAPW1!
+        UNAME: ${{ secrets.UNAME }}
+        PW: ${{ secrets.PW }}
       run: newman run tests/API/LotterySelector.postman_collection.json -e tests/API/LotteryProject-dev.postman_environment.json --global-var "lottery_username=${{ secrets.AUTH_USERANME }}" --global-var "lottery_password=${{ secrets.AUTH_PW}}" --folder Tests
