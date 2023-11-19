@@ -2083,18 +2083,11 @@
 				}
 			],
 			"id": "538f994a-fab4-41eb-9afc-7210ebacff70",
-			"auth": {
-				"type": "basic",
-				"basic": {
-					"password": "howToYellow_W22riteAPW1!",
-					"username": "adminUser"
-				}
-			},
 			"event": [
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "80d0d6ab-f831-47bf-91f5-ce17eb9782c2",
+						"id": "78fff42c-1fc4-4d43-b31d-443cb11b82f8",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -2104,7 +2097,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "aed9c2e8-6aa7-473d-af01-0255831e65f6",
+						"id": "01d99139-17aa-4972-9237-bd663de1a016",
 						"type": "text/javascript",
 						"exec": [
 							""
