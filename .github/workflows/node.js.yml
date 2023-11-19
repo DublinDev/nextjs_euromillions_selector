@@ -51,4 +51,4 @@ jobs:
         fi
 
     - name: Run api tests
-      run: newman run tests/API/LotterySelector.postman_collection.json -e tests/API/LotteryProject-dev.postman_environment.json --global-var "lottery_username=adminUser" --global-var lottery_password=howToYellow_W22riteAPW1! --folder Tests
+      run: newman run tests/API/LotterySelector.postman_collection.json -e tests/API/LotteryProject-dev.postman_environment.json --global-var "lottery_username=${{ secrets.UNAME }}" --global-var lottery_password=${{ secrets.PW }} --folder Tests
