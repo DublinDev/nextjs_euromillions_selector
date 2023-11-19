@@ -49,8 +49,8 @@
 										"exec": [
 											"let name = pm.globals.get(\"lottery_username\");",
 											"let pw = pm.globals.get(\"lottery_password\");",
-											"console.log(\"___\"+name+\"df\")",
-											"console.log(pw+\"dsd\")",
+											"console.log(`name is adminUser: ${name}`);",
+											"console.log(`pw is expected: ${pw}`);",
 											""
 										],
 										"type": "text/javascript"
