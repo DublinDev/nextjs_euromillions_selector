@@ -7,6 +7,7 @@
     "test:e2e": "playwright test"
   },
   "dependencies": {
+    "dotenv": "^16.3.1",
     "langchain": "^0.0.172",
     "next": "latest",
     "openai": "^4.7.1",
