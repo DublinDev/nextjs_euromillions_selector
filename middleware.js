@@ -1,35 +1,3 @@
-// import { NextResponse } from 'next/server'
-
-// export const config = {
-//     matcher: [
-//         '/',
-//         '/pages/api/:path'
-//     ],
-// }
-
-// export function middleware(req) {
-//     const basicAuth = req.headers.get('authorization')
-//     const url = req.nextUrl
-
-//     console.log('Executing');
-//     console.log(`NextUrl: ${url}`);
-//     if (basicAuth) {
-//         const authValue = basicAuth.split(' ')[1]
-//         const [user, pwd] = atob(authValue).split(':')
-
-//         if (user === 'a' && pwd === 'pw') {
-//             // if (user === process.env.BASIC_AUTH_PASSWORD && pwd === process.env.BASIC_AUTH_PASSWORD) {
-//             return NextResponse.next()
-//         }
-//     }
-//     url.pathname = '/api/auth'
-
-//     return NextResponse.rewrite(url)
-// }
-
-
-// middleware.js
-
 import { NextResponse } from 'next/server';
 
 export function middleware(request) {
