@@ -40,4 +40,7 @@ jobs:
       # This is a simple way to wait, but you might want to use a more robust approach, such as polling an endpoint.
 
     - name: Run api tests
-      run: npm run test:api
+      env: 
+        UNAME: adminUser
+        PW: howToYellow_W22riteAPW1!
+      run: newman run tests/API/LotterySelector.postman_collection.json -e tests/API/LotteryProject-dev.postman_environment.json --global-var "lottery_username=${{ secrets.UNAME }}" --global-var "lottery_password=${{ secrets.PW}}" --folder Tests

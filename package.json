@@ -4,8 +4,7 @@
     "build": "next build",
     "dev": "next dev",
     "start": "next start",
-    "test:e2e": "playwright test",
-    "test:api": "newman run tests/API/LotterySelector.postman_collection.json -e tests/API/LotteryProject-dev.postman_environment.json --folder Tests"
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "langchain": "^0.0.172",
