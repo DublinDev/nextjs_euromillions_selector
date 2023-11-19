@@ -41,6 +41,19 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"let name = pm.globals.get(\"lottery_username\");",
+											"let pw = pm.globals.get(\"lottery_password\");",
+											"console.log(name)",
+											"console.log(pw)",
+											""
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
