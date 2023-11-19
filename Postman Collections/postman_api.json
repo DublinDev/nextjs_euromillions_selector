@@ -2082,7 +2082,36 @@
 					"id": "70e8532a-7ebb-45e9-82e6-84ff77cb482d"
 				}
 			],
-			"id": "538f994a-fab4-41eb-9afc-7210ebacff70"
+			"id": "538f994a-fab4-41eb-9afc-7210ebacff70",
+			"auth": {
+				"type": "basic",
+				"basic": {
+					"password": "{{lottery_password}}",
+					"username": "{{lottery_username}}"
+				}
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "74967dcd-cf02-4c76-9c7c-670680594ed5",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "84568487-39ea-4471-832d-5d0ba3a7bbd4",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Api Calls",
