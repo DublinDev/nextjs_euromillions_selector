@@ -41,7 +41,7 @@ jobs:
       # The & runs the server in the background, allowing the next steps to run while the server is still running.
 
     - name: Wait for server to be ready
-      run: sleep 15s
+      run: sleep 5s
       # This is a simple way to wait, but you might want to use a more robust approach, such as polling an endpoint.
 
     - name: Debug secret presence
