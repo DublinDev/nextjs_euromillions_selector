@@ -42,6 +42,14 @@ jobs:
       run: sleep 15s
       # This is a simple way to wait, but you might want to use a more robust approach, such as polling an endpoint.
 
+    - name: Debug secret presence
+      run: |
+        if [ -z "${{ secrets.UNAME }}" ] || [ -z "${{ secrets.PW }}" ]; then
+          echo "One or more secrets are empty."
+        else
+          echo "All secrets are present."
+        fi
+
     - name: Run api tests
       run: |
         newman run tests/API/LotterySelector.postman_collection.json \
