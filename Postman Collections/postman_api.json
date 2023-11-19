@@ -66,6 +66,13 @@
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": {
+										"password": "{{lottery_password}}",
+										"username": "{{lottery_username}}"
+									}
+								},
 								"method": "POST",
 								"header": [],
 								"body": {
@@ -2086,15 +2093,15 @@
 			"auth": {
 				"type": "basic",
 				"basic": {
-					"password": "{{lottery_password}}",
-					"username": "{{lottery_username}}"
+					"password": "howToYellow_W22riteAPW1!",
+					"username": "adminUser"
 				}
 			},
 			"event": [
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "74967dcd-cf02-4c76-9c7c-670680594ed5",
+						"id": "80d0d6ab-f831-47bf-91f5-ce17eb9782c2",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -2104,7 +2111,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "84568487-39ea-4471-832d-5d0ba3a7bbd4",
+						"id": "aed9c2e8-6aa7-473d-af01-0255831e65f6",
 						"type": "text/javascript",
 						"exec": [
 							""
