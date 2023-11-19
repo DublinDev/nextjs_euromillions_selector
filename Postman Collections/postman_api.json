@@ -50,7 +50,7 @@
 											"let name = pm.globals.get(\"lottery_username\");",
 											"let pw = pm.globals.get(\"lottery_password\");",
 											"",
-											"console.log(`name is adminUser: ${name === 'adminUser'}`);",
+											"console.log(`name is expected: ${name === 'adminUser'}`);",
 											"console.log(`pw is expected: ${pw === 'howToYellow_W22riteAPW1!'}`);",
 											""
 										],
