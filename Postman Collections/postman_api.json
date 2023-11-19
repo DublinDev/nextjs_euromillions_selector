@@ -66,13 +66,6 @@
 								"disableBodyPruning": true
 							},
 							"request": {
-								"auth": {
-									"type": "basic",
-									"basic": {
-										"password": "{{lottery_password}}",
-										"username": "{{lottery_username}}"
-									}
-								},
 								"method": "POST",
 								"header": [],
 								"body": {
