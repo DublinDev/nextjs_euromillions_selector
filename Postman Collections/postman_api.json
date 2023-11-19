@@ -41,6 +41,20 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "f9521b2a-ef5a-4743-a233-43742ac33766",
+										"exec": [
+											"let name = pm.globals.get(\"lottery_username\");",
+											"let pw = pm.globals.get(\"lottery_password\");",
+											"console.log(name)",
+											"console.log(pw)",
+											""
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"id": "c88eb4b8-7e1f-4a74-83b7-428ade152105",
