@@ -2537,11 +2537,13 @@
 	],
 	"variable": [
 		{
+			"id": "22015ab9-7a0a-4a5b-85e9-d5d1d278eff0",
 			"key": "host",
 			"value": "http://localhost:3000",
 			"type": "string"
 		},
 		{
+			"id": "725a971b-8677-48fe-a174-c07f0b77570f",
 			"key": "test_draw_id",
 			"value": "9999999",
 			"type": "string"
