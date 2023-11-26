@@ -2083,11 +2083,18 @@
 				}
 			],
 			"id": "538f994a-fab4-41eb-9afc-7210ebacff70",
+			"auth": {
+				"type": "basic",
+				"basic": {
+					"password": "{{lottery_password}}",
+					"username": "{{lottery_username}}"
+				}
+			},
 			"event": [
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "78fff42c-1fc4-4d43-b31d-443cb11b82f8",
+						"id": "029c85de-33c7-460e-be61-07c24ddd5cbc",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -2097,7 +2104,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "01d99139-17aa-4972-9237-bd663de1a016",
+						"id": "783d04a1-11d6-4217-bcce-da196137d2c9",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -2537,13 +2544,13 @@
 	],
 	"variable": [
 		{
-			"id": "87221612-bd1b-4d88-ac34-f8c4c2637ebe",
+			"id": "d39985b6-e2d8-49f5-9de5-2841ef066a6a",
 			"key": "host",
 			"value": "http://localhost:3000",
 			"type": "string"
 		},
 		{
-			"id": "01209a39-8dd7-46c0-a086-5e2795c7b88d",
+			"id": "7aac5900-0c36-4539-a159-1792dc76c27e",
 			"key": "test_draw_id",
 			"value": "9999999",
 			"type": "string"
