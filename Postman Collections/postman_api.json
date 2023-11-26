@@ -66,13 +66,6 @@
 								"disableBodyPruning": true
 							},
 							"request": {
-								"auth": {
-									"type": "basic",
-									"basic": {
-										"password": "",
-										"username": ""
-									}
-								},
 								"method": "POST",
 								"header": [],
 								"body": {
@@ -2544,13 +2537,13 @@
 	],
 	"variable": [
 		{
-			"id": "af293085-fd47-4b3c-84c4-f50e293f9588",
+			"id": "87221612-bd1b-4d88-ac34-f8c4c2637ebe",
 			"key": "host",
 			"value": "http://localhost:3000",
 			"type": "string"
 		},
 		{
-			"id": "14b5436f-f745-46a5-8a7b-3350ac082746",
+			"id": "01209a39-8dd7-46c0-a086-5e2795c7b88d",
 			"key": "test_draw_id",
 			"value": "9999999",
 			"type": "string"
