@@ -2223,6 +2223,21 @@
 					]
 				}
 			],
+			"auth": {
+				"type": "basic",
+				"basic": [
+					{
+						"key": "password",
+						"value": "{{lottery_password}}",
+						"type": "string"
+					},
+					{
+						"key": "username",
+						"value": "{{lottery_username}}",
+						"type": "string"
+					}
+				]
+			},
 			"event": [
 				{
 					"listen": "prerequest",
