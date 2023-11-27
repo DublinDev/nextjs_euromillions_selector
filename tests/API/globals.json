@@ -1,0 +1,14 @@
+{
+    "values": [
+        {
+            "key": "lottery_username",
+            "value": "adminUser",
+            "enabled": true
+        },
+        {
+            "key": "lottery_password",
+            "value": "howToYellow_W22riteAPW1!",
+            "enabled": true
+        }
+    ]
+}
