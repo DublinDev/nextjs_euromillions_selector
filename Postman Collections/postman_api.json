@@ -50,6 +50,7 @@
 											"let name = pm.globals.get(\"lottery_username\");",
 											"let pw = pm.globals.get(\"lottery_password\");",
 											"",
+											"console.log(\"Here\");",
 											"console.log(`name is as expected: ${name === 'adminUser'}`);",
 											"console.log(`pw is as expected: ${pw === 'howToYellow_W22riteAPW1!'}`);",
 											"console.log(`name is: ${name.slice(0, 4)+\"*\"+name.slice(4)}`);",
@@ -2544,13 +2545,11 @@
 	],
 	"variable": [
 		{
-			"id": "d39985b6-e2d8-49f5-9de5-2841ef066a6a",
 			"key": "host",
 			"value": "http://localhost:3000",
 			"type": "string"
 		},
 		{
-			"id": "7aac5900-0c36-4539-a159-1792dc76c27e",
 			"key": "test_draw_id",
 			"value": "9999999",
 			"type": "string"
