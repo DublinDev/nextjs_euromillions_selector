@@ -4,7 +4,7 @@ const newman = require('newman'); // require newman in your project
 newman.run({
     collection: require('./LotterySelector.postman_collection.json'),
     environment: require('./LotteryProject-dev.postman_environment.json'),
-    globals: require('./globals.json'),
+    globals: require('./globals'),
     folder: "Tests",
     reporters: 'cli'
 }, function (err) {

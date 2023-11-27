@@ -39,4 +39,4 @@ jobs:
       # This is a simple way to wait, but you might want to use a more robust approach, such as polling an endpoint.
 
     - name: Run api tests
-      run: npm run test:api2
+      run: BASIC_AUTH_USERNAME=${{ secrets.UNAME }} BASIC_AUTH_PASSWORD=${{ secrets.PW }} npm run test:api2 
