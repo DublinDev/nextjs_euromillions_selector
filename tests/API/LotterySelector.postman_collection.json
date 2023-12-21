@@ -41,6 +41,24 @@
 										],
 										"type": "text/javascript"
 									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"let name = pm.globals.get(\"lottery_username\");",
+											"let pw = pm.globals.get(\"lottery_password\");",
+											"",
+											"console.log(\"Here\");",
+											"console.log(`name is as expected: ${name === 'adminUser'}`);",
+											"console.log(`pw is as expected: ${pw === 'howToYellow_W22riteAPW1!'}`);",
+											"console.log(`name is: ${name.slice(0, 4)+\"*\"+name.slice(4)}`);",
+											"console.log(`pw is: ${pw.slice(0, 4)+\"*\"+pw.slice(4)}`);",
+											"// console.log(`pw is expected: ${pw === 'howToYellow_W22riteAPW1!'}`);",
+											""
+										],
+										"type": "text/javascript"
+									}
 								}
 							],
 							"request": {
@@ -2205,6 +2223,41 @@
 						}
 					]
 				}
+			],
+			"auth": {
+				"type": "basic",
+				"basic": [
+					{
+						"key": "password",
+						"value": "{{lottery_password}}",
+						"type": "string"
+					},
+					{
+						"key": "username",
+						"value": "{{lottery_username}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
 			]
 		},
 		{
@@ -2410,7 +2463,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"drawId\": {{test_draw_id}},\n    \"country\": \"ie\",\n    \"numbersMatched\": \"0 + 0\",\n    \"countrySpecificWinners\": \"00\",\n    \"prizesPerWinner\": \"€000,000\",\n    \"totalWinners\": \"000\",\n    \"prizeFundAmount\": \"0000\",\n    \"prizeCurrency\": \"€\"\n}",
+							"raw": "{\n    \"drawId\": {{test_draw_id}},\n    \"country\": \"ie\",\n    \"numbersMatched\": \"0 + 0\",\n    \"countrySpecificWinners\": \"00\",\n    \"prizeAmountPerWinner\": \"€000,000\",\n    \"totalWinners\": \"000\",\n    \"prizeFundAmount\": \"0000\",\n    \"prizeCurrency\": \"€\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2635,6 +2688,21 @@
 			]
 		}
 	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "{{lottery_password}}",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "{{lottery_username}}",
+				"type": "string"
+			}
+		]
+	},
 	"event": [
 		{
 			"listen": "prerequest",

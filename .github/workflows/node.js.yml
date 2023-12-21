@@ -1,19 +1,15 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
-
 name: Newman API Tests
-
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
+env:
+  USERNAME: ${{ secrets.UNAME }}
+  PASSWORD: ${{ secrets.PW }}
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [18.x]
@@ -29,7 +25,10 @@ jobs:
         cache: 'npm'
 
     - name: Install dependencies
-      run: npm i
+      run: npm ci
+
+    # - name: Install newman
+    #   run: npm i -g newman
 
     - name: Start development server
       run: npm run dev &
@@ -40,4 +39,4 @@ jobs:
       # This is a simple way to wait, but you might want to use a more robust approach, such as polling an endpoint.
 
     - name: Run api tests
-      run: npm run test:api
+      run: BASIC_AUTH_USERNAME=${{ secrets.UNAME }} BASIC_AUTH_PASSWORD=${{ secrets.PW }} npm run test:api2 

@@ -1,11 +1,14 @@
 // @ts-check
 const { defineConfig, devices } = require('@playwright/test');
-
+const dotenv = require('dotenv');
+const path = require('path');
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// require('dotenv').config();
+require('dotenv').config();
+
+dotenv.config({ path: path.resolve(__dirname, '..', '.env.local') });
 
 /**
  * @see https://playwright.dev/docs/test-configuration
@@ -27,6 +30,12 @@ module.exports = defineConfig({
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: 'http://localhost:3000',
 
+    httpCredentials: {
+      username: process.env.BASIC_AUTH_USERNAME || '',
+      password: process.env.BASIC_AUTH_PASSWORD || ''
+      // username: 'adminUser',
+      // password: 'howToYellow_W22riteAPW1!',
+    },
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },
