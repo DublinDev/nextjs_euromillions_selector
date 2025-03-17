@@ -19,7 +19,7 @@ export default async function sendPrompt(req, res) {
                 role: 'user', content: req.body.query,
             }
         ],
-        model: 'gpt-3.5-turbo',
+        model: 'gpt-3.5-turbo-instruct',
     });
 
     res.status(200).json(completion.choices);

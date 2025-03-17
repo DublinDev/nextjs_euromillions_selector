@@ -30,6 +30,7 @@ export default async function sendPrompt(req, res) {
 
     const result = await executor.call({ input: searchQuery });
 
+    console.log(result);
     console.log(`Got output ${result.output}`);
 
     console.log(

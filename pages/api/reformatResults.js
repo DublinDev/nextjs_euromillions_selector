@@ -25,7 +25,7 @@ export default async function sendFinalPromptToFormat(req, res) {
                 role: 'user', content: JSON.stringify(obj)
             }
         ],
-        model: 'gpt-3.5-turbo',
+        model: 'gpt-3.5-turbo-instruct',
     });
 
     res.status(200).json(JSON.parse(completion.choices[0].message.content));
